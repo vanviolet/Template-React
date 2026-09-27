@@ -5,7 +5,7 @@ import '@/i18n';
 export default function App() {
   return (
     <AppProviders>
-      <AppRouter />
+          <AppRouter />
     </AppProviders>
   );
 }

@@ -31,6 +31,7 @@ import {
 import { LANGUAGE_OPTIONS } from '@/constants/app';
 import { CommandSearchDialog } from '@/components/ui/command.dialog';
 import { cn } from '@/utils/cn';
+import LangSwitcher from '@/i18n/lang.switcher';
 
 export function AppHeader() {
   const { t, i18n } = useTranslation();
@@ -64,10 +65,6 @@ export function AppHeader() {
     return t('nav.dashboard');
   };
 
-  const handleLanguageChange = (langCode: string) => {
-    i18n.changeLanguage(langCode);
-    localStorage.setItem('app_language', langCode);
-  };
 
   return (
     <>
@@ -131,30 +128,7 @@ export function AppHeader() {
           </Button>
 
           {/* Language Switcher */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
-                <Globe className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-40">
-              <DropdownMenuLabel>{t('pengaturan.language')}</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              {LANGUAGE_OPTIONS.map((lang) => (
-                <DropdownMenuItem
-                  key={lang.code}
-                  onClick={() => handleLanguageChange(lang.code)}
-                  className="justify-between"
-                >
-                  <span className="flex items-center gap-2">
-                    <span>{lang.flag}</span>
-                    <span>{lang.label}</span>
-                  </span>
-                  {i18n.language === lang.code && <Check className="h-3.5 w-3.5 text-primary" />}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <LangSwitcher />
 
           {/* Theme Switcher */}
           <DropdownMenu>

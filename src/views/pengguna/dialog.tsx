@@ -17,13 +17,19 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useSearchParams } from 'react-router-dom';
+import { useTableSearchParams } from '@/hooks/use.search.params';
 
 export function PenggunaDialog() {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
-  const { dialogMode, selectedUser, closeDialog } = usePenggunaDialogStore();
+  const { dialogMode, selectedUser, closeDialog: closePenggunaDialog } = usePenggunaDialogStore();
   const { showLoading, hideLoading } = useLoadingStore();
-
+  const {removeSingleFilter} = useTableSearchParams();
+function closeDialog() {
+    removeSingleFilter('action'); // Remove the "action" search parameter
+    closePenggunaDialog();
+  }
   const createMutation = useMutation({
     mutationFn: async (values: any) => {
       showLoading('Menambahkan pengguna baru...');
@@ -81,7 +87,12 @@ export function PenggunaDialog() {
   const isOpen = dialogMode !== null;
 
   return (
-    <Dialog open={isOpen} onOpenChange={(open) => !open && closeDialog()}>
+    <Dialog open={isOpen} onOpenChange={(open) => {
+      if (!open) {
+        closeDialog();
+        
+      }
+    }}>
       <DialogContent className={dialogMode === 'delete' ? 'max-w-md' : 'max-w-xl'}>
         {/* Mode: Create */}
         {dialogMode === 'create' && (

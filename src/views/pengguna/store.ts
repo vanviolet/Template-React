@@ -14,5 +14,9 @@ export const usePenggunaDialogStore = create<PenggunaDialogState>((set) => ({
   selectedUser: null,
   openDialog: (mode: DialogMode, user: UserDTO | null = null) =>
     set({ dialogMode: mode, selectedUser: user }),
-  closeDialog: () => set({ dialogMode: null, selectedUser: null }),
+  closeDialog: () =>{
+    // remove search params "action" when dialog is closed
+  
+    return  set({ dialogMode: null, selectedUser: null })
+  },
 }));

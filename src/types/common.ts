@@ -19,6 +19,7 @@ export interface FilterParams {
   sortOrder?: 'asc' | 'desc';
   page?: number;
   pageSize?: number;
+  action?: string;
 }
 
 export interface SelectOption {
