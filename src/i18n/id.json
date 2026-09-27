@@ -127,5 +127,31 @@
     "themeDark": "Mode Gelap",
     "themeSystem": "Sistem Ikuti OS",
     "language": "Bahasa Antarmuka"
+  },
+  "auth": {
+    "greeting": "Hi Learner",
+    "welcomeSub": "Selamat datang di Platform Materio Education Hub",
+    "emailLabel": "Alamat Email",
+    "passwordLabel": "Kata Sandi",
+    "emailPlaceholder": "nama@email.com",
+    "passwordPlaceholder": "••••••••",
+    "forgotPassword": "Lupa kata sandi?",
+    "or": "atau",
+    "loginWithGoogle": "Masuk dengan Google",
+    "loginButton": "Masuk Sekarang",
+    "noAccount": "Belum memiliki akun?",
+    "signUp": "Daftar Akun Baru",
+    "rememberMe": "Ingat Saya",
+    "heroTagline": "Program Pendidikan Unggulan",
+    "heroQuote": "Pendidikan adalah senjata paling mematikan di dunia, karena dengan pendidikan Anda dapat mengubah dunia.",
+    "heroAuthor": "Dr. Sarah Jenkins",
+    "heroRole": "Direktur Akademik Materio Education",
+    "loginSuccess": "Berhasil masuk ke dalam sistem!",
+    "validation": {
+      "emailRequired": "Alamat email wajib diisi",
+      "emailInvalid": "Format email tidak valid",
+      "passwordRequired": "Kata sandi wajib diisi",
+      "passwordMin": "Kata sandi minimal 6 karakter"
+    }
   }
 }

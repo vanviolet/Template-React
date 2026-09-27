@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   Menu,
   Sun,
@@ -35,6 +35,7 @@ import { cn } from '@/utils/cn';
 export function AppHeader() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
+  const navigate = useNavigate();
   const isMobile = useIsMobile();
   const { isCollapsed, toggleMobileOpen } = useSidebarStore();
   const { theme, setTheme } = useThemeStore();
@@ -234,7 +235,10 @@ export function AppHeader() {
                 <span>{t('app.settings')}</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-destructive focus:bg-destructive/10 focus:text-destructive">
+              <DropdownMenuItem
+                onClick={() => navigate('/login')}
+                className="text-destructive focus:bg-destructive/10 focus:text-destructive cursor-pointer"
+              >
                 <LogOut className="h-3.5 w-3.5" />
                 <span>{t('app.logout')}</span>
               </DropdownMenuItem>

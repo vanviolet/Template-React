@@ -127,5 +127,31 @@
     "themeDark": "Dark Mode",
     "themeSystem": "Follow System OS",
     "language": "Interface Language"
+  },
+  "auth": {
+    "greeting": "Hi Learner",
+    "welcomeSub": "Welcome to Materio Education Hub Platform",
+    "emailLabel": "Email Address",
+    "passwordLabel": "Password",
+    "emailPlaceholder": "name@email.com",
+    "passwordPlaceholder": "••••••••",
+    "forgotPassword": "Forgot password?",
+    "or": "or",
+    "loginWithGoogle": "Login with Google",
+    "loginButton": "Login Now",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "rememberMe": "Remember Me",
+    "heroTagline": "Featured Educational Program",
+    "heroQuote": "Education is the most powerful weapon which you can use to change the world.",
+    "heroAuthor": "Dr. Sarah Jenkins",
+    "heroRole": "Academic Director, Materio Education",
+    "loginSuccess": "Successfully logged in!",
+    "validation": {
+      "emailRequired": "Email address is required",
+      "emailInvalid": "Invalid email address format",
+      "passwordRequired": "Password is required",
+      "passwordMin": "Password must be at least 6 characters"
+    }
   }
 }

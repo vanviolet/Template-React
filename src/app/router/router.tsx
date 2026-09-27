@@ -1,9 +1,41 @@
-import { Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AppLayout } from '@/layouts/app/layout';
+import { AuthLayout } from '@/layouts/auth/layout';
 import { adminRoutes } from './admin.routes';
 
+const LoginView = lazy(() => import('@/views/auth/login/view'));
+const RegisterView = lazy(() => import('@/views/auth/register/view'));
+
 const router = createBrowserRouter([
+  {
+    path: '/login',
+    element: (
+      <Suspense fallback={null}>
+        <AuthLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: '',
+        element: <LoginView />,
+      },
+    ],
+  },
+  {
+    path: '/register',
+    element: (
+      <Suspense fallback={null}>
+        <AuthLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: '',
+        element: <RegisterView />,
+      },
+    ],
+  },
   {
     element: (
       <Suspense fallback={null}>
@@ -14,7 +46,11 @@ const router = createBrowserRouter([
   },
   {
     path: '*',
-    element: <Suspense fallback={null}><AppLayout /></Suspense>,
+    element: (
+      <Suspense fallback={null}>
+        <AppLayout />
+      </Suspense>
+    ),
     children: [
       {
         path: '*',
