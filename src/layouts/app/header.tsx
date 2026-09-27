@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import {
@@ -39,6 +39,22 @@ export function AppHeader() {
   const { isCollapsed, toggleMobileOpen } = useSidebarStore();
   const { theme, setTheme } = useThemeStore();
   const [isCommandOpen, setIsCommandOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const getBreadcrumbTitle = () => {
     if (location.pathname.startsWith('/pengguna')) return t('nav.pengguna');
@@ -56,8 +72,11 @@ export function AppHeader() {
     <>
       <header
         className={cn(
-          'fixed top-0 right-0 z-20 h-16 border-b border-border bg-card/80 backdrop-blur-md transition-all duration-300 flex items-center justify-between px-4 lg:px-6',
-          isMobile ? 'left-0' : isCollapsed ? 'left-16' : 'left-64'
+          'fixed z-20 transition-all duration-300 flex items-center justify-between',
+          isMobile ? 'left-0 right-0' : isCollapsed ? 'left-16 right-0' : 'left-64 right-0',
+          isScrolled
+            ? 'top-2 mx-3 sm:mx-4 lg:mx-6 h-14 rounded-xl border border-border/80 bg-card/85 backdrop-blur-md shadow-md px-4'
+            : 'top-0 h-16 border-b-0 bg-transparent px-4 lg:px-6 shadow-none'
         )}
       >
         {/* Left Zone: Sidebar Toggle & Page Title */}
@@ -87,7 +106,7 @@ export function AppHeader() {
         <button
           type="button"
           onClick={() => setIsCommandOpen(true)}
-          className="hidden md:flex items-center justify-between w-64 lg:w-80 h-8 px-3 rounded-lg border border-input bg-muted/30 hover:bg-muted/60 text-xs text-muted-foreground transition-colors cursor-pointer select-none"
+          className="hidden md:flex items-center justify-between w-60 lg:w-80 h-8 px-3 rounded-lg border border-input bg-muted/30 hover:bg-muted/60 text-xs text-muted-foreground transition-colors cursor-pointer select-none"
         >
           <div className="flex items-center gap-2">
             <Search className="h-3.5 w-3.5 shrink-0" />
@@ -167,7 +186,7 @@ export function AppHeader() {
             <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-destructive animate-pulse" />
           </Button>
 
-          {/* User Profile Menu - Complete Information */}
+          {/* User Profile Menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 p-1 gap-2 rounded-full hover:bg-muted">
