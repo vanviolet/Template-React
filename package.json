@@ -13,6 +13,7 @@
   "dependencies": {
     "@fontsource/geist-mono": "^5.3.0",
     "@fontsource/geist-sans": "^5.3.0",
+    "@fullcalendar/react": "^7.1.0",
     "@google/genai": "^2.4.0",
     "@radix-ui/react-avatar": "^1.2.6",
     "@radix-ui/react-dialog": "^1.1.23",
@@ -39,6 +40,7 @@
     "react-router-dom": "^7.18.4",
     "sonner": "^2.0.8",
     "tailwind-merge": "^3.7.0",
+    "temporal-polyfill": "^1.0.5",
     "vite": "^8.3.0",
     "zod": "^4.6.5",
     "zustand": "^5.0.15"

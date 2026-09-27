@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { AppSidebar } from './sidebar';
 import { AppHeader } from './header';
@@ -7,7 +8,7 @@ import { useSidebarStore } from '@/app/store/sidebar.store';
 import { useIsMobile } from '@/hooks/use.mobile';
 import { cn } from '@/utils/cn';
 
-export function AppLayout() {
+export function AdminLayout() {
   const isCollapsed = useSidebarStore((s) => s.isCollapsed);
   const isMobile = useIsMobile();
 
@@ -25,7 +26,9 @@ export function AppLayout() {
         )}
       >
         <div className="flex-1 p-4 sm:p-6 max-w-7xl w-full mx-auto space-y-6">
-          <Outlet />
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
         </div>
       </main>
     </div>

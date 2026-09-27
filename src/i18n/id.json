@@ -12,6 +12,7 @@
   "nav": {
     "dashboard": "Dashboard",
     "pengguna": "Pengguna",
+    "calendar": "Kalender",
     "analitik": "Analitik",
     "pengaturan": "Pengaturan",
     "mainMenu": "Menu Utama",
@@ -118,6 +119,22 @@
     "metricOverview": "Ikhtisar Metrik",
     "conversionRate": "Tingkat Konversi",
     "avgSession": "Rata-rata Sesi"
+  },
+  "calendar": {
+    "title": "Kalender",
+    "description": "Lihat agenda dan jadwal pada satu tampilan kalender.",
+    "agenda": "Agenda",
+    "selectedDate": "Jadwal untuk {{date}}",
+    "emptyDay": "Tidak ada jadwal pada tanggal ini.",
+    "events": {
+      "teamSync": "Koordinasi tim",
+      "designReview": "Tinjauan desain",
+      "productPlanning": "Perencanaan produk",
+      "clientMeeting": "Pertemuan klien",
+      "sprintRetro": "Evaluasi sprint",
+      "monthlyDemo": "Demo bulanan",
+      "releaseReview": "Tinjauan rilis"
+    }
   },
   "pengaturan": {
     "title": "Pengaturan Sistem",

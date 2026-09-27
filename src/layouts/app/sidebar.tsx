@@ -76,7 +76,7 @@ export function AppSidebar() {
   const location = useLocation();
   const isMobile = useIsMobile();
   const { isCollapsed, toggleCollapse, isMobileOpen, setMobileOpen } = useSidebarStore();
-
+  
   const navGroups = [
     {
       group: 'APPS & PAGES',
@@ -117,7 +117,7 @@ export function AppSidebar() {
           icon: MessageSquare,
         },
         {
-          label: 'Calendar',
+          label: t('nav.calendar'),
           path: '/calendar',
           icon: Calendar,
         },

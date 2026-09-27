@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { AppLayout } from '@/layouts/app/layout';
+import { AdminLayout } from '@/layouts/app/layout';
 import { AuthLayout } from '@/layouts/auth/layout';
 import { adminRoutes } from './admin.routes';
 
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
   {
     element: (
       <Suspense fallback={null}>
-        <AppLayout />
+        <AdminLayout />
       </Suspense>
     ),
     children: adminRoutes,
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
     path: '*',
     element: (
       <Suspense fallback={null}>
-        <AppLayout />
+        <AdminLayout />
       </Suspense>
     ),
     children: [

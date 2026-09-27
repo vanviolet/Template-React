@@ -12,6 +12,7 @@
   "nav": {
     "dashboard": "Dashboard",
     "pengguna": "Users",
+    "calendar": "Calendar",
     "analitik": "Analytics",
     "pengaturan": "Settings",
     "mainMenu": "Main Menu",
@@ -118,6 +119,22 @@
     "metricOverview": "Metrics Overview",
     "conversionRate": "Conversion Rate",
     "avgSession": "Average Session"
+  },
+  "calendar": {
+    "title": "Calendar",
+    "description": "Review your agenda and schedule in one calendar view.",
+    "agenda": "Agenda",
+    "selectedDate": "Schedule for {{date}}",
+    "emptyDay": "There are no events on this date.",
+    "events": {
+      "teamSync": "Team sync",
+      "designReview": "Design review",
+      "productPlanning": "Product planning",
+      "clientMeeting": "Client meeting",
+      "sprintRetro": "Sprint retrospective",
+      "monthlyDemo": "Monthly demo",
+      "releaseReview": "Release review"
+    }
   },
   "pengaturan": {
     "title": "System Settings",
