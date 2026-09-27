@@ -5,7 +5,7 @@ const Table = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-  <div className="relative w-full overflow-x-auto rounded-lg border border-border bg-card">
+  <div className="relative w-full overflow-x-auto">
     <table
       ref={ref}
       className={cn('w-full caption-bottom text-xs border-collapse', className)}
@@ -19,7 +19,7 @@ const TableHeader = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cn('bg-muted/50 [&_tr]:border-b border-border', className)} {...props} />
+  <thead ref={ref} className={cn('bg-muted/30 [&_tr]:border-b border-border/60', className)} {...props} />
 ));
 TableHeader.displayName = 'TableHeader';
 
@@ -57,7 +57,7 @@ const TableRow = React.forwardRef<
   <tr
     ref={ref}
     className={cn(
-      'group border-b border-border transition-colors hover:bg-muted/40 data-[state=selected]:bg-muted',
+      'group border-b border-border/50 transition-colors hover:bg-muted/30 data-[state=selected]:bg-primary/5',
       className
     )}
     {...props}
@@ -74,9 +74,9 @@ const TableHead = React.forwardRef<HTMLTableCellElement, TableHeadProps>(
     <th
       ref={ref}
       className={cn(
-        'h-10 px-3 text-left align-middle font-semibold text-muted-foreground [&:has([role=checkbox])]:pr-0 whitespace-nowrap',
+        'h-11 px-4 text-left align-middle font-bold text-muted-foreground/80 tracking-wider uppercase text-[11px] [&:has([role=checkbox])]:pr-0 whitespace-nowrap',
         isPinnedRight &&
-          'sticky right-0 z-10 text-center bg-muted/90 backdrop-blur-xs border-l border-border shadow-[-4px_0_12px_rgba(0,0,0,0.06)]',
+          'sticky right-0 z-10 text-center bg-muted/90 backdrop-blur-xs border-l border-border/50 shadow-[-4px_0_12px_rgba(0,0,0,0.04)]',
         className
       )}
       {...props}
@@ -94,9 +94,9 @@ const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
     <td
       ref={ref}
       className={cn(
-        'p-3 align-middle [&:has([role=checkbox])]:pr-0',
+        'px-4 py-3 align-middle [&:has([role=checkbox])]:pr-0',
         isPinnedRight &&
-          'sticky right-0 z-10 text-center bg-card group-hover:bg-muted/80 transition-colors border-l border-border shadow-[-4px_0_12px_rgba(0,0,0,0.06)]',
+          'sticky right-0 z-10 text-center bg-card group-hover:bg-muted/50 transition-colors border-l border-border/50 shadow-[-4px_0_12px_rgba(0,0,0,0.04)]',
         className
       )}
       {...props}
