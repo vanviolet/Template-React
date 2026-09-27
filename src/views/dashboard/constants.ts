@@ -1,0 +1,3 @@
+export const DASHBOARD_CONSTANTS = {
+  REFRESH_INTERVAL: 60000,
+};

@@ -1,0 +1,131 @@
+{
+  "app": {
+    "title": "Admin Console",
+    "subTitle": "Unified Management System",
+    "searchPlaceholder": "Search data, menu, or transactions...",
+    "notifications": "Notifications",
+    "profile": "My Profile",
+    "settings": "Settings",
+    "logout": "Log Out",
+    "copyright": "© 2026 Admin Console. All Rights Reserved."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "pengguna": "Users",
+    "analitik": "Analytics",
+    "pengaturan": "Settings",
+    "mainMenu": "Main Menu",
+    "systemMenu": "System"
+  },
+  "common": {
+    "add": "Add New",
+    "edit": "Edit",
+    "delete": "Delete",
+    "detail": "Details",
+    "save": "Save",
+    "cancel": "Cancel",
+    "search": "Search",
+    "filter": "Filter",
+    "reset": "Reset",
+    "refresh": "Refresh",
+    "action": "Actions",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "all": "All",
+    "no": "No.",
+    "loading": "Loading data...",
+    "processing": "Processing...",
+    "success": "Success",
+    "error": "An error occurred",
+    "emptyDataTitle": "No data available",
+    "emptyDataDesc": "Data for this view is currently empty.",
+    "notFoundTitle": "No results found",
+    "notFoundDesc": "Try adjusting your search keywords or filters.",
+    "itemsPerPage": "Per page",
+    "page": "Page",
+    "of": "of",
+    "previous": "Previous",
+    "next": "Next",
+    "clearFilter": "Clear Filters",
+    "activeFilters": "Active Filters:",
+    "doubleClickToClose": "Click outside once more to close the dialog"
+  },
+  "pengguna": {
+    "title": "User Management",
+    "description": "Manage user accounts, system roles, and authorization permissions.",
+    "addTitle": "Add New User",
+    "editTitle": "Edit User Data",
+    "detailTitle": "User Details",
+    "deleteConfirmTitle": "Confirm Deletion",
+    "deleteConfirmDesc": "Are you sure you want to delete user {{name}}? This action cannot be undone.",
+    "fields": {
+      "nama": "Full Name",
+      "email": "Primary Email",
+      "noHp": "WhatsApp / Phone Number",
+      "nik": "ID Card / NIK Number",
+      "gaji": "Salary Expectation (IDR)",
+      "role": "Role",
+      "status": "Account Status",
+      "verified": "Verified Partnership"
+    },
+    "placeholders": {
+      "nama": "Enter full name",
+      "email": "example@email.com",
+      "noHp": "081234567890",
+      "nik": "3171234567890001",
+      "gaji": "10000000",
+      "role": "Select Role",
+      "search": "Search name, email, or NIK..."
+    },
+    "roles": {
+      "admin": "Lead Administrator",
+      "manager": "Operations Manager",
+      "staff": "Executive Staff",
+      "user": "Standard User"
+    },
+    "messages": {
+      "createSuccess": "User successfully created",
+      "updateSuccess": "User data successfully updated",
+      "deleteSuccess": "User successfully deleted"
+    },
+    "validation": {
+      "namaMin": "Full name must be at least 3 characters",
+      "namaMax": "Full name must not exceed 100 characters",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email format",
+      "noHpInvalid": "Phone number must be at least 10 digits",
+      "nikInvalid": "ID card NIK must be exactly 16 digits",
+      "gajiMin": "Salary expectation must be at least IDR 1,000,000",
+      "roleRequired": "Role selection is required",
+      "statusRequired": "Status selection is required"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard Summary",
+    "subtitle": "Overview of real-time system performance and key metrics.",
+    "totalUser": "Total Users",
+    "activeUser": "Active Users",
+    "monthlyRevenue": "Monthly Revenue",
+    "systemHealth": "System Health",
+    "recentActivity": "Recent Activity",
+    "quickActions": "Quick Actions",
+    "growthRate": "Growth Rate"
+  },
+  "analitik": {
+    "title": "Reports & Analytics",
+    "subtitle": "Monitor daily statistics and module performance.",
+    "metricOverview": "Metrics Overview",
+    "conversionRate": "Conversion Rate",
+    "avgSession": "Average Session"
+  },
+  "pengaturan": {
+    "title": "System Settings",
+    "subtitle": "Configure application preferences, language, and theme mode.",
+    "appearance": "Appearance",
+    "themeLight": "Light Mode",
+    "themeDark": "Dark Mode",
+    "themeSystem": "Follow System OS",
+    "language": "Interface Language"
+  }
+}

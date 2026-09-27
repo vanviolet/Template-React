@@ -1,0 +1,6 @@
+{
+  "name": "Admin Dashboard Template",
+  "description": "Minimal, clean & modern admin dashboard template with fixed sidebar, fixed header, React Router, Zustand, i18n, TanStack Query, TanStack Form, Zod, react-number-format, and shadcn/ui.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

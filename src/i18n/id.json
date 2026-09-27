@@ -1,0 +1,131 @@
+{
+  "app": {
+    "title": "Admin Console",
+    "subTitle": "Sistem Manajemen Terpadu",
+    "searchPlaceholder": "Cari data, menu, atau transaksi...",
+    "notifications": "Notifikasi",
+    "profile": "Profil Saya",
+    "settings": "Pengaturan",
+    "logout": "Keluar",
+    "copyright": "© 2026 Admin Console. Hak Cipta Dilindungi."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "pengguna": "Pengguna",
+    "analitik": "Analitik",
+    "pengaturan": "Pengaturan",
+    "mainMenu": "Menu Utama",
+    "systemMenu": "Sistem"
+  },
+  "common": {
+    "add": "Tambah",
+    "edit": "Edit",
+    "delete": "Hapus",
+    "detail": "Detail",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "search": "Cari",
+    "filter": "Filter",
+    "reset": "Riset",
+    "refresh": "Perbarui",
+    "action": "Aksi",
+    "status": "Status",
+    "active": "Aktif",
+    "inactive": "Nonaktif",
+    "all": "Semua",
+    "no": "No.",
+    "loading": "Memuat data...",
+    "processing": "Diproses...",
+    "success": "Berhasil",
+    "error": "Terjadi Kesalahan",
+    "emptyDataTitle": "Belum ada data",
+    "emptyDataDesc": "Data untuk tampilan ini masih kosong.",
+    "notFoundTitle": "Data tidak ditemukan",
+    "notFoundDesc": "Coba sesuaikan kata kunci pencarian atau filter Anda.",
+    "itemsPerPage": "Per halaman",
+    "page": "Halaman",
+    "of": "dari",
+    "previous": "Sebelumnya",
+    "next": "Selanjutnya",
+    "clearFilter": "Hapus Filter",
+    "activeFilters": "Filter Aktif:",
+    "doubleClickToClose": "Klik sekali lagi di luar area dialog untuk menutup"
+  },
+  "pengguna": {
+    "title": "Manajemen Pengguna",
+    "description": "Kelola data akun pengguna, peran, dan hak akses sistem.",
+    "addTitle": "Tambah Pengguna Baru",
+    "editTitle": "Edit Data Pengguna",
+    "detailTitle": "Detail Informasi Pengguna",
+    "deleteConfirmTitle": "Konfirmasi Hapus",
+    "deleteConfirmDesc": "Apakah Anda yakin ingin menghapus pengguna {{name}}? Tindakan ini tidak dapat dibatalkan.",
+    "fields": {
+      "nama": "Nama Lengkap",
+      "email": "Email Utama",
+      "noHp": "Nomor WhatsApp / HP",
+      "nik": "Nomor NIK KTP",
+      "gaji": "Ekspektasi Gaji (Rupiah)",
+      "role": "Peran / Role",
+      "status": "Status Akun",
+      "verified": "Kemitraan Terverifikasi"
+    },
+    "placeholders": {
+      "nama": "Masukkan nama lengkap",
+      "email": "contoh@email.com",
+      "noHp": "081234567890",
+      "nik": "3171234567890001",
+      "gaji": "10000000",
+      "role": "Pilih Peran",
+      "search": "Cari nama, email, atau NIK..."
+    },
+    "roles": {
+      "admin": "Administrator Utama",
+      "manager": "Manajer Operasional",
+      "staff": "Staf Eksekutif",
+      "user": "Pengguna Biasa"
+    },
+    "messages": {
+      "createSuccess": "Pengguna berhasil ditambahkan",
+      "updateSuccess": "Data pengguna berhasil diperbarui",
+      "deleteSuccess": "Pengguna berhasil dihapus"
+    },
+    "validation": {
+      "namaMin": "Nama lengkap minimal 3 karakter",
+      "namaMax": "Nama lengkap maksimal 100 karakter",
+      "emailRequired": "Email wajib diisi",
+      "emailInvalid": "Format email tidak valid",
+      "noHpInvalid": "Nomor HP minimal 10 digit",
+      "nikInvalid": "NIK KTP harus tepat 16 digit angka",
+      "gajiMin": "Ekspektasi gaji minimal Rp 1.000.000",
+      "roleRequired": "Peran wajib dipilih",
+      "statusRequired": "Status wajib dipilih"
+    }
+  },
+  "dashboard": {
+    "title": "Ringkasan Dashboard",
+    "subtitle": "Informasi performa dan metrik terkini sistem.",
+    "totalUser": "Total Pengguna",
+    "activeUser": "Pengguna Aktif",
+    "monthlyRevenue": "Pendapatan Bulan Ini",
+    "systemHealth": "Kesehatan Sistem",
+    "recentActivity": "Aktivitas Terbaru",
+    "quickActions": "Aksi Cepat",
+    "growthRate": "Tingkat Pertumbuhan"
+  },
+  "analitik": {
+    "title": "Laporan & Analitik",
+    "subtitle": "Pantau statistik harian dan performa modul.",
+    "metricOverview": "Ikhtisar Metrik",
+    "conversionRate": "Tingkat Konversi",
+    "avgSession": "Rata-rata Sesi"
+  },
+  "pengaturan": {
+    "title": "Pengaturan Sistem",
+    "subtitle": "Atur preferensi aplikasi, bahasa, dan mode tampilan.",
+    "appearance": "Tampilan",
+    "themeLight": "Mode Terang",
+    "themeDark": "Mode Gelap",
+    "themeSystem": "Sistem Ikuti OS",
+    "language": "Bahasa Antarmuka"
+  }
+}
