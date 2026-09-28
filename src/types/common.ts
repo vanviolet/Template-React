@@ -25,6 +25,12 @@ export interface FilterParams {
 export interface SelectOption {
   label: string;
   value: string;
+  description?: string;
+  disabled?: boolean;
+  badge?: string;
+  data?: any;
 }
+
+export type ComboboxOption = SelectOption;
 
 export type ThemeMode = 'light' | 'dark' | 'system';

@@ -6,6 +6,7 @@ const PenggunaView = lazy(() => import('@/views/pengguna/view'));
 const AnalitikView = lazy(() => import('@/views/analitik/view'));
 const PengaturanView = lazy(() => import('@/views/pengaturan/view'));
 const CalendarView = lazy(() => import('@/views/calendar/view'));
+const TreeViewPage = lazy(() => import('@/views/tree/view'));
 
 export const adminRoutes: RouteObject[] = [
   {
@@ -19,6 +20,10 @@ export const adminRoutes: RouteObject[] = [
   {
     path: '/pengguna',
     element: <PenggunaView />,
+  },
+  {
+    path: '/tree',
+    element: <TreeViewPage />,
   },
   {
     path: '/analitik',

@@ -1,13 +1,13 @@
 import { useForm } from '@tanstack/react-form';
 import { useTranslation } from 'react-i18next';
-import { UserDTO } from '@/services/api-generated';
+import { UserDTO, ApiClient } from '@/services/api-generated';
 import { getUserFormSchema } from './schema';
 import { DEFAULT_FORM_VALUES, FORM_ROLE_OPTIONS } from './constants';
 import { Input } from '@/components/ui/input';
-import { Select } from '@/components/ui/select';
+import { Combobox } from '@/components/ui/combobox';
 import { Button } from '@/components/ui/button';
 import { RupiahInput, PhoneInput, NikInput } from '@/components/form/number.input';
-import { CheckCircle2, ShieldAlert } from 'lucide-react';
+import { CheckCircle2, ShieldAlert, MapPin } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
 export interface PenggunaFormProps {
@@ -70,6 +70,7 @@ export function PenggunaForm({
           gaji: initialData.gaji,
           role: initialData.role,
           status: initialData.status,
+          kota: initialData.kota || '',
           verified: initialData.verified,
         }
       : DEFAULT_FORM_VALUES,
@@ -290,7 +291,7 @@ export function PenggunaForm({
               <label className="text-xs font-semibold text-foreground">
                 {t('pengguna.fields.role')}
               </label>
-              <Select
+              <Combobox
                 options={FORM_ROLE_OPTIONS}
                 value={field.state.value}
                 onChange={(val) => field.handleChange(val as any)}
@@ -306,7 +307,7 @@ export function PenggunaForm({
               <label className="text-xs font-semibold text-foreground">
                 {t('pengguna.fields.status')}
               </label>
-              <Select
+              <Combobox
                 options={[
                   { label: t('common.active'), value: 'active' },
                   { label: t('common.inactive'), value: 'inactive' },
@@ -318,6 +319,69 @@ export function PenggunaForm({
           )}
         </form.Field>
       </div>
+
+      {/* Field: Kota Asal (Server-Side Async Combobox with Debounced Search & Infinite Scroll) */}
+      <form.Field
+        name="kota"
+        validators={{
+          onChange: ({ value }) => {
+            const res = schema.shape.kota.safeParse(value);
+            if (!res.success && res.error) {
+              return res.error?.issues?.[0]?.message || res.error?.errors?.[0]?.message;
+            }
+            return undefined;
+          },
+        }}
+      >
+        {(field) => {
+          const errorMessage = getFieldError(schema, 'kota', field.state.value, field.state.meta.errors);
+          return (
+            <div className="space-y-1">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-semibold text-foreground flex items-center gap-1.5">
+                  <MapPin className="h-3.5 w-3.5 text-primary" />
+                  <span>{t('pengguna.fields.kota')}</span>
+                  <span className="text-destructive">*</span>
+                </label>
+                <span className="text-[10px] text-muted-foreground font-medium">
+                  Async API • Debounce 300ms • Infinite Scroll
+                </span>
+              </div>
+              <Combobox
+                async
+                loadOptions={async ({ search, page, pageSize }) => {
+                  const res = await ApiClient.getCities({ search, page, pageSize });
+                  return {
+                    options: res.data.map((c) => ({
+                      label: `${c.name} (${c.type})`,
+                      value: c.name,
+                      description: c.province,
+                      badge: c.type,
+                    })),
+                    hasMore: page < res.totalPages,
+                    total: res.total,
+                  };
+                }}
+                value={field.state.value}
+                onChange={(val) => field.handleChange(val)}
+                placeholder={t('pengguna.placeholders.kota')}
+                searchPlaceholder="Cari kota, kabupaten, atau provinsi..."
+                error={Boolean(errorMessage)}
+                clearable
+              />
+              {errorMessage ? (
+                <p className="text-[11px] text-destructive font-medium mt-1">
+                  {errorMessage}
+                </p>
+              ) : (
+                <p className="text-[10px] text-muted-foreground">
+                  Data dimuat bertahap dari API dengan scroll otomatis dan pencarian instan.
+                </p>
+              )}
+            </div>
+          );
+        }}
+      </form.Field>
 
       {/* Boolean Radio Group Cards */}
       <form.Field name="verified">

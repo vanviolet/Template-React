@@ -29,5 +29,6 @@ export const DEFAULT_FORM_VALUES = {
   gaji: 8000000,
   role: 'staff' as const,
   status: 'active' as const,
+  kota: '',
   verified: true,
 };

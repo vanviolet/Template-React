@@ -13,6 +13,7 @@
     "dashboard": "Dashboard",
     "pengguna": "Users",
     "calendar": "Calendar",
+    "tree": "Tree View",
     "analitik": "Analytics",
     "pengaturan": "Settings",
     "mainMenu": "Main Menu",
@@ -50,7 +51,13 @@
     "next": "Next",
     "clearFilter": "Clear Filters",
     "activeFilters": "Active Filters:",
-    "doubleClickToClose": "Click outside once more to close the dialog"
+    "doubleClickToClose": "Click outside once more to close the dialog",
+    "select": "Select...",
+    "searchPlaceholder": "Search options...",
+    "loadMore": "Load more",
+    "loadingMore": "Loading more...",
+    "allLoaded": "All options loaded",
+    "clear": "Clear selection"
   },
   "pengguna": {
     "title": "User Management",
@@ -68,6 +75,7 @@
       "gaji": "Salary Expectation (IDR)",
       "role": "Role",
       "status": "Account Status",
+      "kota": "City / Domicile",
       "verified": "Verified Partnership"
     },
     "placeholders": {
@@ -77,6 +85,7 @@
       "nik": "3171234567890001",
       "gaji": "10000000",
       "role": "Select Role",
+      "kota": "Search & select city in Indonesia...",
       "search": "Search name, email, or NIK..."
     },
     "roles": {
@@ -99,7 +108,8 @@
       "nikInvalid": "ID card NIK must be exactly 16 digits",
       "gajiMin": "Salary expectation must be at least IDR 1,000,000",
       "roleRequired": "Role selection is required",
-      "statusRequired": "Status selection is required"
+      "statusRequired": "Status selection is required",
+      "kotaRequired": "City / Domicile is required"
     }
   },
   "dashboard": {
@@ -120,12 +130,50 @@
     "conversionRate": "Conversion Rate",
     "avgSession": "Average Session"
   },
+  "datepicker": {
+    "selectDay": "Select a day",
+    "placeholder": "DD.MM.YYYY",
+    "remove": "Remove",
+    "done": "Done",
+    "today": "Today",
+    "now": "Today"
+  },
+  "timepicker": {
+    "startWith": "Start with",
+    "endWith": "End with",
+    "selectTime": "Select time",
+    "allDay": "All day"
+  },
   "calendar": {
     "title": "Calendar",
-    "description": "Review your agenda and schedule in one calendar view.",
+    "description": "Review your agenda and schedule in one modern calendar view.",
+    "todaySummary": "You have {{meetings}} meetings and {{events}} event today.",
+    "allScheduled": "All Scheduled",
+    "meetings": "Meetings",
+    "eventsTab": "Events",
+    "holidays": "Holidays",
+    "timeOff": "Time Off",
+    "joinMeeting": "Join Meeting",
+    "seeConflict": "See Conflict",
+    "conflicted": "Conflicted",
+    "addEvent": "New Event",
+    "addEventTitle": "Create New Schedule",
+    "eventDetails": "Event Details",
+    "eventTitle": "Event Title",
+    "eventCategory": "Category",
+    "eventLocation": "Location / Platform",
+    "eventParticipants": "Participants",
+    "deleteEvent": "Delete Event",
     "agenda": "Agenda",
     "selectedDate": "Schedule for {{date}}",
     "emptyDay": "There are no events on this date.",
+    "views": {
+      "day": "Day",
+      "week": "Week",
+      "month": "Month",
+      "list": "Agenda List",
+      "last7days": "Last 7 days"
+    },
     "events": {
       "teamSync": "Team sync",
       "designReview": "Design review",
@@ -133,7 +181,13 @@
       "clientMeeting": "Client meeting",
       "sprintRetro": "Sprint retrospective",
       "monthlyDemo": "Monthly demo",
-      "releaseReview": "Release review"
+      "releaseReview": "Release review",
+      "weeklyMeeting": "Weekly Team Meeting",
+      "productLaunch": "Product Launch Event",
+      "salesTraining": "Sales Team Training Session",
+      "workshopDesign": "Workshop: Mastering Design Thinking",
+      "strategyPlanning": "Strategy Planning Session",
+      "financialReview": "Quarterly Financial Review"
     }
   },
   "pengaturan": {

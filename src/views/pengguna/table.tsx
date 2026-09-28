@@ -11,6 +11,7 @@ import {
   SearchX,
   CheckCircle2,
   SlidersHorizontal,
+  MapPin,
 } from 'lucide-react';
 import { ApiClient } from '@/services/api-generated';
 import { queryKeys } from '@/services/query.keys';
@@ -30,10 +31,10 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Select } from '@/components/ui/select';
+import { Combobox } from '@/components/ui/combobox';
 import { Checkbox } from '@/components/ui/checkbox';
 import { CubeSpinner } from '@/components/ui/cube.spinner';
-import { PAGE_SIZE_OPTIONS } from '@/constants/app';
+import { TablePagination, TableViewCard } from '@/components/ui/table.view.template';
 
 export function PenggunaTable() {
   const { t } = useTranslation();
@@ -95,7 +96,7 @@ export function PenggunaTable() {
         {/* Filter Controls & Add Button */}
         <div className="flex flex-wrap items-center gap-2.5">
           <div className="w-36">
-            <Select
+            <Combobox
               options={ROLE_OPTIONS}
               value={filterParams.role || 'all'}
               onChange={(val) => updateParams({ role: val })}
@@ -104,7 +105,7 @@ export function PenggunaTable() {
           </div>
 
           <div className="w-32">
-            <Select
+            <Combobox
               options={STATUS_OPTIONS}
               value={filterParams.status || 'all'}
               onChange={(val) => updateParams({ status: val })}
@@ -277,7 +278,15 @@ export function PenggunaTable() {
                           </span>
                         )}
                       </div>
-                      <span className="text-[11px] text-muted-foreground font-mono">{user.email}</span>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span className="text-[11px] text-muted-foreground font-mono">{user.email}</span>
+                        {user.kota && (
+                          <span className="inline-flex items-center gap-1 text-[10px] text-primary bg-primary/10 px-1.5 py-0.5 rounded font-medium">
+                            <MapPin className="h-2.5 w-2.5 shrink-0" />
+                            <span>{user.kota}</span>
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </TableCell>
 
@@ -321,54 +330,16 @@ export function PenggunaTable() {
         </TableBody>
       </Table>
 
-      {/* 3. Integrated Card Footer: Pagination */}
+      {/* 3. Integrated Card Footer: Reusable TablePagination */}
       {!isLoading && users.length > 0 && (
-        <div className="px-5 py-3.5 border-t border-border/50 bg-card flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <div className="flex items-center gap-3">
-            <span>{t('common.itemsPerPage')}:</span>
-            <div className="w-20">
-              <Select
-                options={PAGE_SIZE_OPTIONS.map((size) => ({
-                  label: String(size),
-                  value: String(size),
-                }))}
-                value={String(pageSize)}
-                onChange={(val) => updateParams({ pageSize: Number(val), page: 1 })}
-              />
-            </div>
-            <span>
-              Total <strong className="text-foreground font-mono">{total}</strong> data
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <span>
-              {t('common.page')} <strong className="text-foreground font-mono">{page}</strong> {t('common.of')}{' '}
-              <strong className="text-foreground font-mono">{totalPages}</strong>
-            </span>
-
-            <div className="flex items-center gap-1">
-              <Button
-                variant="outline"
-                size="icon"
-                disabled={page <= 1}
-                onClick={() => updateParams({ page: page - 1 })}
-                className="h-8 w-8 rounded-lg"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                disabled={page >= totalPages}
-                onClick={() => updateParams({ page: page + 1 })}
-                className="h-8 w-8 rounded-lg"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
+        <TablePagination
+          page={page}
+          pageSize={pageSize}
+          total={total}
+          totalPages={totalPages}
+          onPageChange={(newPage) => updateParams({ page: newPage })}
+          onPageSizeChange={(newPageSize) => updateParams({ pageSize: newPageSize, page: 1 })}
+        />
       )}
     </div>
   );

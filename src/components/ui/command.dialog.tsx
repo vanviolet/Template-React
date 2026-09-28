@@ -2,20 +2,11 @@ import * as React from 'react';
 import { Command } from 'cmdk';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import {
-  Search,
-  LayoutDashboard,
-  Users,
-  BarChart3,
-  Settings,
-  PlusCircle,
-  Sun,
-  Moon,
-  Globe,
-} from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useThemeStore } from '@/app/store/theme.store';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
+import { APP_NAV_GROUPS, QUICK_ACTIONS_REGISTRY } from '@/constants/navigation';
 
 interface CommandDialogProps {
   open: boolean;
@@ -46,90 +37,103 @@ export function CommandSearchDialog({ open, onOpenChange }: CommandDialogProps) 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent requireDoubleClickOutside={false} className="p-0 max-w-xl overflow-hidden border-border bg-card shadow-2xl [&>button]:hidden">
+      <DialogContent
+        requireDoubleClickOutside={false}
+        className="p-0 max-w-xl overflow-hidden border-border bg-card shadow-2xl [&>button]:hidden"
+      >
         <Command className="flex flex-col w-full overflow-hidden rounded-xl bg-card">
           <div className="flex items-center border-b border-border px-3.5">
             <Search className="mr-2.5 h-4 w-4 shrink-0 text-muted-foreground" />
             <Command.Input
-              placeholder={t('app.searchPlaceholder')}
+              placeholder={t('app.searchPlaceholder', 'Ketik perintah atau cari modul...')}
               className="flex h-11 w-full rounded-md bg-transparent text-xs text-foreground placeholder:text-muted-foreground focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
             />
-            <Badge variant="outline" className="font-mono text-[10px] text-muted-foreground shrink-0 ml-2">
+            <Badge
+              variant="outline"
+              className="font-mono text-[10px] text-muted-foreground shrink-0 ml-2"
+            >
               ESC
             </Badge>
           </div>
 
           <Command.List className="max-h-[300px] overflow-y-auto p-2 space-y-2 text-xs">
             <Command.Empty className="py-6 text-center text-xs text-muted-foreground">
-              {t('common.notFoundTitle')}
+              {t('common.notFoundTitle', 'Tidak ada data')}
             </Command.Empty>
 
-            {/* Group Navigasi */}
-            <Command.Group heading={t('nav.mainMenu')} className="text-[11px] font-semibold text-muted-foreground px-2 py-1 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group-heading]]:pb-1">
-              <Command.Item
-                onSelect={() => handleSelect(() => navigate('/dashboard'))}
-                className="flex items-center gap-2 px-2.5 py-2 rounded-lg cursor-pointer text-foreground hover:bg-accent data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground transition-colors"
-              >
-                <LayoutDashboard className="h-4 w-4 shrink-0" />
-                <span>{t('nav.dashboard')}</span>
-              </Command.Item>
+            {/* Navigation Groups from shared APP_NAV_GROUPS */}
+            {APP_NAV_GROUPS.map((group) => {
+              // Only show active/enabled items in cmdk
+              const activeItems = group.items.filter((item) => !item.disabled);
+              if (activeItems.length === 0) return null;
 
-              <Command.Item
-                onSelect={() => handleSelect(() => navigate('/pengguna'))}
-                className="flex items-center gap-2 px-2.5 py-2 rounded-lg cursor-pointer text-foreground hover:bg-accent data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground transition-colors"
-              >
-                <Users className="h-4 w-4 shrink-0" />
-                <span>{t('nav.pengguna')}</span>
-              </Command.Item>
+              const headingText = group.groupKey
+                ? t(group.groupKey, group.group)
+                : group.group;
 
-              <Command.Item
-                onSelect={() => handleSelect(() => navigate('/analitik'))}
-                className="flex items-center gap-2 px-2.5 py-2 rounded-lg cursor-pointer text-foreground hover:bg-accent data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground transition-colors"
-              >
-                <BarChart3 className="h-4 w-4 shrink-0" />
-                <span>{t('nav.analitik')}</span>
-              </Command.Item>
+              return (
+                <Command.Group
+                  key={group.group}
+                  heading={headingText}
+                  className="text-[11px] font-semibold text-muted-foreground px-2 py-1 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group-heading]]:pb-1"
+                >
+                  {activeItems.map((item) => {
+                    const Icon = item.icon;
+                    const itemLabel = t(item.labelKey, item.defaultLabel);
+                    return (
+                      <Command.Item
+                        key={item.id}
+                        value={`${itemLabel} ${item.path} ${(item.keywords || []).join(' ')}`}
+                        onSelect={() => handleSelect(() => navigate(item.path))}
+                        className="flex items-center justify-between px-2.5 py-2 rounded-lg cursor-pointer text-foreground hover:bg-accent data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground transition-colors"
+                      >
+                        <div className="flex items-center gap-2">
+                          <Icon className="h-4 w-4 shrink-0" />
+                          <span>{itemLabel}</span>
+                        </div>
+                        <span className="font-mono text-[10px] opacity-60">
+                          {item.path}
+                        </span>
+                      </Command.Item>
+                    );
+                  })}
+                </Command.Group>
+              );
+            })}
 
-              <Command.Item
-                onSelect={() => handleSelect(() => navigate('/pengaturan'))}
-                className="flex items-center gap-2 px-2.5 py-2 rounded-lg cursor-pointer text-foreground hover:bg-accent data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground transition-colors"
-              >
-                <Settings className="h-4 w-4 shrink-0" />
-                <span>{t('nav.pengaturan')}</span>
-              </Command.Item>
-            </Command.Group>
-
-            {/* Group Aksi Cepat */}
-            <Command.Group heading="Aksi Cepat" className="text-[11px] font-semibold text-muted-foreground px-2 py-1 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group-heading]]:pb-1">
-              <Command.Item
-                onSelect={() => handleSelect(() => navigate('/pengguna?action=add'))}
-                className="flex items-center gap-2 px-2.5 py-2 rounded-lg cursor-pointer text-foreground hover:bg-accent data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground transition-colors"
-              >
-                <PlusCircle className="h-4 w-4 shrink-0" />
-                <span>{t('pengguna.addTitle')}</span>
-              </Command.Item>
-
-              <Command.Item
-                onSelect={() => handleSelect(() => toggleTheme())}
-                className="flex items-center gap-2 px-2.5 py-2 rounded-lg cursor-pointer text-foreground hover:bg-accent data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground transition-colors"
-              >
-                {theme === 'dark' ? <Sun className="h-4 w-4 shrink-0" /> : <Moon className="h-4 w-4 shrink-0" />}
-                <span>{theme === 'dark' ? t('pengaturan.themeLight') : t('pengaturan.themeDark')}</span>
-              </Command.Item>
-
-              <Command.Item
-                onSelect={() =>
-                  handleSelect(() => {
-                    const nextLang = i18n.language === 'id' ? 'en' : 'id';
-                    i18n.changeLanguage(nextLang);
-                    localStorage.setItem('app_language', nextLang);
-                  })
-                }
-                className="flex items-center gap-2 px-2.5 py-2 rounded-lg cursor-pointer text-foreground hover:bg-accent data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground transition-colors"
-              >
-                <Globe className="h-4 w-4 shrink-0" />
-                <span>Ganti Bahasa ({i18n.language === 'id' ? 'English' : 'Bahasa Indonesia'})</span>
-              </Command.Item>
+            {/* Quick Actions from shared QUICK_ACTIONS_REGISTRY */}
+            <Command.Group
+              heading="Aksi Cepat"
+              className="text-[11px] font-semibold text-muted-foreground px-2 py-1 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group-heading]]:pb-1"
+            >
+              {QUICK_ACTIONS_REGISTRY.map((actionItem) => {
+                const Icon = actionItem.icon;
+                const actionTitle = t(actionItem.titleKey, actionItem.defaultTitle);
+                return (
+                  <Command.Item
+                    key={actionItem.id}
+                    value={`${actionTitle} ${(actionItem.keywords || []).join(' ')}`}
+                    onSelect={() =>
+                      handleSelect(() =>
+                        actionItem.action({
+                          navigate,
+                          toggleTheme,
+                          currentTheme: theme,
+                          changeLanguage: (nextLang) => {
+                            i18n.changeLanguage(nextLang);
+                            localStorage.setItem('app_language', nextLang);
+                          },
+                          currentLanguage: i18n.language || 'id',
+                        })
+                      )
+                    }
+                    className="flex items-center gap-2 px-2.5 py-2 rounded-lg cursor-pointer text-foreground hover:bg-accent data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground transition-colors"
+                  >
+                    <Icon className="h-4 w-4 shrink-0" />
+                    <span>{actionTitle}</span>
+                  </Command.Item>
+                );
+              })}
             </Command.Group>
           </Command.List>
         </Command>

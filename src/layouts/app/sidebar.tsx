@@ -1,16 +1,6 @@
 import { useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
-  LayoutDashboard,
-  Users,
-  BarChart3,
-  Settings,
-  Mail,
-  MessageSquare,
-  Calendar,
-  Kanban,
-  GraduationCap,
-  Truck,
   ChevronRight,
   PanelLeftClose,
   PanelLeftOpen,
@@ -20,6 +10,7 @@ import { useSidebarStore } from '@/app/store/sidebar.store';
 import { useIsMobile } from '@/hooks/use.mobile';
 import { cn } from '@/utils/cn';
 import { Button } from '@/components/ui/button';
+import { APP_NAV_GROUPS } from '@/constants/navigation';
 
 export function MaterioLogo({ className }: { className?: string }) {
   return (
@@ -77,73 +68,13 @@ export function AppSidebar() {
   const isMobile = useIsMobile();
   const { isCollapsed, toggleCollapse, isMobileOpen, setMobileOpen } = useSidebarStore();
   
-  const navGroups = [
-    {
-      group: 'APPS & PAGES',
-      items: [
-        {
-          label: t('nav.dashboard'),
-          path: '/dashboard',
-          icon: LayoutDashboard,
-        },
-        {
-          label: t('nav.pengguna'),
-          path: '/pengguna',
-          icon: Users,
-        },
-        {
-          label: 'Academy',
-          path: '/academy',
-          icon: GraduationCap,
-          hasChevron: true,
-          disabled: true,
-        },
-        {
-          label: 'Logistics',
-          path: '/logistics',
-          icon: Truck,
-          hasChevron: true,
-          disabled: true,
-        },
-        {
-          label: 'Email',
-          path: '/email',
-          icon: Mail,
-          badge: '12',
-        },
-        {
-          label: 'Chat',
-          path: '/chat',
-          icon: MessageSquare,
-        },
-        {
-          label: t('nav.calendar'),
-          path: '/calendar',
-          icon: Calendar,
-        },
-        {
-          label: 'Kanban',
-          path: '/kanban',
-          icon: Kanban,
-        },
-        {
-          label: t('nav.analitik'),
-          path: '/analitik',
-          icon: BarChart3,
-        },
-      ],
-    },
-    {
-      group: 'SYSTEM',
-      items: [
-        {
-          label: t('nav.pengaturan'),
-          path: '/pengaturan',
-          icon: Settings,
-        },
-      ],
-    },
-  ];
+  const navGroups = APP_NAV_GROUPS.map((g) => ({
+    group: g.groupKey ? t(g.groupKey, g.group) : g.group,
+    items: g.items.map((item) => ({
+      ...item,
+      label: t(item.labelKey, item.defaultLabel),
+    })),
+  }));
 
   const sidebarContent = (
     <div className="flex h-full flex-col justify-between bg-card text-card-foreground border-r border-border transition-all duration-300 select-none">

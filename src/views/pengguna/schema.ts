@@ -26,6 +26,10 @@ export const getUserFormSchema = (t: (key: string) => string) =>
     status: z.enum(['active', 'inactive'], {
       required_error: t('pengguna.validation.statusRequired'),
     }),
+    kota: z
+      .string()
+      .min(1, { message: t('pengguna.validation.kotaRequired') })
+      .default('Jakarta Selatan'),
     verified: z.boolean().default(false),
   });
 

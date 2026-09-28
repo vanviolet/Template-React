@@ -1,154 +1,272 @@
+/* FullCalendar modern SaaS theme matching Fullcalendar2.jpg */
 .calendar-shell {
-  --fc-monarch-primary: var(--primary);
-  --fc-monarch-primary-foreground: var(--primary-foreground);
-  --fc-monarch-secondary: var(--secondary);
-  --fc-monarch-secondary-foreground: var(--secondary-foreground);
-  --fc-monarch-tertiary: var(--muted);
-  --fc-monarch-tertiary-foreground: var(--muted-foreground);
-  --fc-monarch-event: var(--primary);
-  --fc-monarch-event-contrast: var(--primary-foreground);
-  --fc-monarch-highlight: color-mix(in oklch, var(--primary) 12%, transparent);
-  --fc-monarch-now: var(--destructive);
-  --fc-monarch-selected: var(--accent);
-  --fc-monarch-selected-foreground: var(--accent-foreground);
-  --fc-monarch-outline: var(--ring);
-  --fc-monarch-background: var(--card);
-  --fc-monarch-foreground: var(--foreground);
-  --fc-monarch-faint-foreground: var(--muted-foreground);
-  --fc-monarch-muted-foreground: var(--muted-foreground);
-  --fc-monarch-border: var(--border);
-  --fc-monarch-strong-border: var(--input);
+  --fc-border-color: var(--border);
+  --fc-page-bg-color: transparent;
+  --fc-neutral-bg-color: var(--muted);
+  --fc-today-bg-color: color-mix(in oklch, var(--primary) 4%, transparent);
+  --fc-list-event-hover-bg-color: var(--accent);
+  --fc-highlight-color: color-mix(in oklch, var(--primary) 8%, transparent);
   min-width: 0;
+  font-family: inherit;
+  overflow-x: auto;
 }
 
-.calendar-shell .fc-toolbar {
-  flex-wrap: wrap;
-  gap: 0.75rem 1rem;
-  margin-bottom: 1.25rem;
+/* Ensure horizontal scrollability on narrow viewports so days don't collapse */
+.calendar-shell .fc-view-harness {
+  overflow-x: auto !important;
 }
 
-.calendar-shell .fc-toolbar-title {
-  color: var(--foreground);
-  font-size: 1.125rem;
-  font-weight: 650;
-  letter-spacing: -0.025em;
+.calendar-shell .fc-scrollgrid {
+  min-width: 720px;
+  border: 1px solid var(--border) !important;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: var(--card);
 }
 
-.calendar-shell .fc-button {
-  min-height: 2.25rem;
-  font-size: 0.75rem;
-  font-weight: 550;
+.calendar-shell .fc-theme-standard td,
+.calendar-shell .fc-theme-standard th {
+  border-color: color-mix(in oklch, var(--border) 60%, transparent);
 }
 
-.calendar-shell .fc-button:focus-visible {
-  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+.calendar-shell .fc-scrollgrid-section > td {
+  border-top-width: 1px;
+}
+
+/* Column Header Cells (Days: 04 MON, 05 TUE, ...) */
+.calendar-shell .fc-col-header-cell {
+  background-color: var(--card);
+  padding: 0.5rem 0.25rem;
+  border-bottom: 1px solid var(--border) !important;
 }
 
 .calendar-shell .fc-col-header-cell-cushion {
-  padding-block: 0.75rem;
   color: var(--muted-foreground);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.045em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  text-decoration: none !important;
+  padding: 0.35rem 0.5rem;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.calendar-shell .fc-day-today .fc-col-header-cell-cushion {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+/* Time Gutter and Slot styling (9 AM, 10 AM, etc.) */
+.calendar-shell .fc-timegrid-slot-label {
+  vertical-align: middle;
+}
+
+.calendar-shell .fc-timegrid-slot-label-cushion {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  padding-right: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.calendar-shell .fc-timegrid-axis-frame {
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
+}
+
+.calendar-shell .fc-timegrid-axis-cushion {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.calendar-shell .fc-timegrid-slot {
+  height: 3rem;
+  cursor: pointer;
+}
+
+.calendar-shell .fc-timegrid-slot:hover {
+  background-color: color-mix(in oklch, var(--primary) 2%, transparent);
+}
+
+.calendar-shell .fc-timegrid-slot-minor {
+  border-top-style: dotted !important;
+  border-top-color: color-mix(in oklch, var(--border) 40%, transparent) !important;
+}
+
+/* Month view day cell */
+.calendar-shell .fc-daygrid-day-frame {
+  min-height: 6.5rem;
+  padding: 0.25rem;
+  transition: background-color 150ms ease;
+  cursor: pointer;
 }
 
 .calendar-shell .fc-daygrid-day-number {
-  padding: 0.625rem 0.625rem 0.25rem;
-  color: var(--foreground);
   font-size: 0.75rem;
-  font-weight: 500;
-  text-decoration: none;
+  font-weight: 600;
+  color: var(--foreground);
+  padding: 0.35rem 0.5rem;
+  text-decoration: none !important;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
 }
 
 .calendar-shell .fc-day-other .fc-daygrid-day-number {
   color: var(--muted-foreground);
+  opacity: 0.45;
 }
 
-.calendar-shell .fc-day-today {
-  background-color: color-mix(in oklch, var(--primary) 5%, var(--card));
+.calendar-shell .fc-day-today .fc-daygrid-day-number {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
-.calendar-shell .fc-day-selected .fc-daygrid-day-frame {
-  background-color: color-mix(in oklch, var(--primary) 8%, var(--card));
-  box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--primary) 38%, transparent);
+.calendar-shell .fc-daygrid-day:hover {
+  background-color: color-mix(in oklch, var(--primary) 2%, transparent);
 }
 
-.calendar-shell .fc-daygrid-day-frame {
-  min-height: 6.5rem;
-  transition: background-color 140ms ease;
+/* All-Day / Multi-Day Events Section Polish */
+.calendar-shell .fc-timegrid-divider {
+  border-top: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--border) !important;
 }
 
-.calendar-shell .fc-daygrid-day-events {
-  margin-inline: 0.375rem;
+/* EVENT CARD OVERRIDES - Floating SaaS Cards matching Fullcalendar2.jpg */
+.calendar-shell .fc-timegrid-event-harness > .fc-timegrid-event,
+.calendar-shell .fc-daygrid-event-harness > .fc-daygrid-event {
+  border: none !important;
+  margin: 2px 3px !important;
+  border-radius: 0.75rem !important;
+  overflow: visible !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04) !important;
+  cursor: pointer !important;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms ease !important;
 }
 
-.calendar-shell .fc-event {
-  border-radius: 0.3rem;
-  padding-inline: 0.125rem;
-  font-size: 0.6875rem;
-  font-weight: 550;
+/* Card Hover Elevation Effect matching user request */
+.calendar-shell .fc-timegrid-event:hover,
+.calendar-shell .fc-daygrid-event:hover {
+  transform: translateY(-2px) scale(1.01) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -4px rgba(0, 0, 0, 0.08) !important;
+  z-index: 50 !important;
+  cursor: pointer !important;
 }
 
+/* Event Tones matching Fullcalendar2.jpg soft pastel cards with dark text */
+/* Tone 1: Soft Blue (Brainstorming, Project Review, Sales Training) */
 .calendar-shell .fc-event-primary {
-  border-color: color-mix(in oklch, var(--primary) 30%, transparent);
-  background: color-mix(in oklch, var(--primary) 12%, var(--card));
-  color: var(--foreground);
+  background-color: #dbeafe !important;
+  border-left: 4px solid #3b82f6 !important;
+  color: #1e3a8a !important;
 }
 
+.dark .calendar-shell .fc-event-primary {
+  background-color: #1e293b !important;
+  border-left: 4px solid #60a5fa !important;
+  color: #bfdbfe !important;
+}
+
+/* Tone 2: Soft Sky/Info */
 .calendar-shell .fc-event-info {
-  border-color: color-mix(in oklch, var(--info) 30%, transparent);
-  background: color-mix(in oklch, var(--info) 12%, var(--card));
-  color: var(--foreground);
+  background-color: #e0f2fe !important;
+  border-left: 4px solid #0284c7 !important;
+  color: #0c4a6e !important;
 }
 
+.dark .calendar-shell .fc-event-info {
+  background-color: #0f2d42 !important;
+  border-left: 4px solid #38bdf8 !important;
+  color: #bae6fd !important;
+}
+
+/* Tone 3: Soft Amber / Warm Peach (Workshop Mastering Design Thinking) */
+.calendar-shell .fc-event-amber {
+  background-color: #ffedd5 !important;
+  border-left: 4px solid #f97316 !important;
+  color: #7c2d12 !important;
+}
+
+.dark .calendar-shell .fc-event-amber {
+  background-color: #3b1d0e !important;
+  border-left: 4px solid #fb923c !important;
+  color: #fed7aa !important;
+}
+
+/* Tone 4: Soft Purple / Violet (Strategy Planning, Multi-day Summit) */
+.calendar-shell .fc-event-purple {
+  background-color: #ede9fe !important;
+  border-left: 4px solid #8b5cf6 !important;
+  color: #4c1d95 !important;
+}
+
+.dark .calendar-shell .fc-event-purple {
+  background-color: #2e1753 !important;
+  border-left: 4px solid #a78bfa !important;
+  color: #ddd6fe !important;
+}
+
+/* Tone 5: Soft Emerald / Green (Holidays, Wellness retreat) */
 .calendar-shell .fc-event-success {
-  border-color: color-mix(in oklch, var(--success) 30%, transparent);
-  background: color-mix(in oklch, var(--success) 12%, var(--card));
-  color: var(--foreground);
+  background-color: #d1fae5 !important;
+  border-left: 4px solid #10b981 !important;
+  color: #064e3b !important;
+}
+
+.dark .calendar-shell .fc-event-success {
+  background-color: #092c20 !important;
+  border-left: 4px solid #34d399 !important;
+  color: #a7f3d0 !important;
 }
 
 .calendar-shell .fc-event-warning {
-  border-color: color-mix(in oklch, var(--warning) 35%, transparent);
-  background: color-mix(in oklch, var(--warning) 16%, var(--card));
-  color: var(--foreground);
+  background-color: #fef3c7 !important;
+  border-left: 4px solid #f59e0b !important;
+  color: #78350f !important;
 }
 
-.calendar-agenda-dot-primary {
-  background-color: var(--primary);
+.dark .calendar-shell .fc-event-warning {
+  background-color: #3d2406 !important;
+  border-left: 4px solid #fbbf24 !important;
+  color: #fde68a !important;
 }
 
-.calendar-agenda-dot-info {
-  background-color: var(--info);
+/* Now Indicator line */
+.calendar-shell .fc-timegrid-now-indicator-line {
+  border-color: #ef4444 !important;
+  border-width: 2px !important;
 }
 
-.calendar-agenda-dot-success {
-  background-color: var(--success);
+.calendar-shell .fc-timegrid-now-indicator-arrow {
+  border-color: #ef4444 !important;
 }
 
-.calendar-agenda-dot-warning {
-  background-color: var(--warning);
+/* List view polish */
+.calendar-shell .fc-list-day-cushion {
+  background-color: var(--muted) !important;
+  font-weight: 700;
+  font-size: 0.75rem;
 }
 
-@media (max-width: 640px) {
-  .calendar-shell .fc-toolbar {
-    justify-content: space-between;
-  }
+.calendar-shell .fc-list-event:hover td {
+  background-color: var(--accent) !important;
+  cursor: pointer;
+}
 
-  .calendar-shell .fc-toolbar-chunk:nth-child(2) {
-    order: -1;
-    width: 100%;
-  }
-
-  .calendar-shell .fc-daygrid-day-frame {
-    min-height: 4.75rem;
-  }
-
-  .calendar-shell .fc-daygrid-day-number {
-    padding: 0.4rem 0.35rem 0.15rem;
-  }
-
-  .calendar-shell .fc-daygrid-day-events {
-    margin-inline: 0.2rem;
-  }
+/* Hide default FullCalendar toolbar - we provide our sleek customized one */
+.calendar-shell .fc-toolbar {
+  display: none;
 }

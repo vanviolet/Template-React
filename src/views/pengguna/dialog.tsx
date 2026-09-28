@@ -194,6 +194,14 @@ function closeDialog() {
               <div className="grid grid-cols-2 gap-4 pt-2 border-t border-border">
                 <div>
                   <span className="text-muted-foreground block text-[11px]">
+                    {t('pengguna.fields.kota')}
+                  </span>
+                  <span className="font-medium text-foreground text-xs">
+                    {selectedUser.kota || '-'}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-muted-foreground block text-[11px]">
                     {t('pengguna.fields.status')}
                   </span>
                   <Badge
@@ -203,12 +211,13 @@ function closeDialog() {
                     {t(`common.${selectedUser.status}`)}
                   </Badge>
                 </div>
-                <div>
-                  <span className="text-muted-foreground block text-[11px]">Terdaftar Sejak</span>
-                  <span className="font-mono text-muted-foreground">
-                    {formatDate(selectedUser.createdAt)}
-                  </span>
-                </div>
+              </div>
+
+              <div className="pt-2 border-t border-border flex items-center justify-between text-[11px]">
+                <span className="text-muted-foreground">Terdaftar Sejak</span>
+                <span className="font-mono text-muted-foreground">
+                  {formatDate(selectedUser.createdAt)}
+                </span>
               </div>
             </div>
 

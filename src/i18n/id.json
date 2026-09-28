@@ -13,6 +13,7 @@
     "dashboard": "Dashboard",
     "pengguna": "Pengguna",
     "calendar": "Kalender",
+    "tree": "Tree View",
     "analitik": "Analitik",
     "pengaturan": "Pengaturan",
     "mainMenu": "Menu Utama",
@@ -50,7 +51,13 @@
     "next": "Selanjutnya",
     "clearFilter": "Hapus Filter",
     "activeFilters": "Filter Aktif:",
-    "doubleClickToClose": "Klik sekali lagi di luar area dialog untuk menutup"
+    "doubleClickToClose": "Klik sekali lagi di luar area dialog untuk menutup",
+    "select": "Pilih...",
+    "searchPlaceholder": "Cari pilihan...",
+    "loadMore": "Muat lebih banyak",
+    "loadingMore": "Memuat lebih banyak...",
+    "allLoaded": "Semua opsi telah dimuat",
+    "clear": "Hapus pilihan"
   },
   "pengguna": {
     "title": "Manajemen Pengguna",
@@ -68,6 +75,7 @@
       "gaji": "Ekspektasi Gaji (Rupiah)",
       "role": "Peran / Role",
       "status": "Status Akun",
+      "kota": "Kota / Kabupaten Asal",
       "verified": "Kemitraan Terverifikasi"
     },
     "placeholders": {
@@ -77,6 +85,7 @@
       "nik": "3171234567890001",
       "gaji": "10000000",
       "role": "Pilih Peran",
+      "kota": "Cari & pilih kota di Indonesia...",
       "search": "Cari nama, email, atau NIK..."
     },
     "roles": {
@@ -99,7 +108,8 @@
       "nikInvalid": "NIK KTP harus tepat 16 digit angka",
       "gajiMin": "Ekspektasi gaji minimal Rp 1.000.000",
       "roleRequired": "Peran wajib dipilih",
-      "statusRequired": "Status wajib dipilih"
+      "statusRequired": "Status wajib dipilih",
+      "kotaRequired": "Kota / Kabupaten wajib dipilih"
     }
   },
   "dashboard": {
@@ -120,12 +130,50 @@
     "conversionRate": "Tingkat Konversi",
     "avgSession": "Rata-rata Sesi"
   },
+  "datepicker": {
+    "selectDay": "Pilih Hari",
+    "placeholder": "HH.BB.TTTT",
+    "remove": "Hapus",
+    "done": "Selesai",
+    "today": "Hari Ini",
+    "now": "Hari Ini"
+  },
+  "timepicker": {
+    "startWith": "Mulai pukul",
+    "endWith": "Selesai pukul",
+    "selectTime": "Pilih Jam",
+    "allDay": "Sepanjang hari"
+  },
   "calendar": {
     "title": "Kalender",
-    "description": "Lihat agenda dan jadwal pada satu tampilan kalender.",
+    "description": "Lihat agenda dan jadwal pada satu tampilan kalender modern.",
+    "todaySummary": "Anda memiliki {{meetings}} rapat dan {{events}} agenda hari ini.",
+    "allScheduled": "Semua Jadwal",
+    "meetings": "Pertemuan",
+    "eventsTab": "Agenda",
+    "holidays": "Hari Libur",
+    "timeOff": "Cuti",
+    "joinMeeting": "Gabung Rapat",
+    "seeConflict": "Lihat Konflik",
+    "conflicted": "Ada Konflik",
+    "addEvent": "Tambah Jadwal",
+    "addEventTitle": "Buat Jadwal Baru",
+    "eventDetails": "Detail Jadwal",
+    "eventTitle": "Judul Agenda",
+    "eventCategory": "Kategori",
+    "eventLocation": "Lokasi / Media",
+    "eventParticipants": "Peserta",
+    "deleteEvent": "Hapus Jadwal",
     "agenda": "Agenda",
     "selectedDate": "Jadwal untuk {{date}}",
     "emptyDay": "Tidak ada jadwal pada tanggal ini.",
+    "views": {
+      "day": "Hari",
+      "week": "Minggu",
+      "month": "Bulan",
+      "list": "Agenda List",
+      "last7days": "7 Hari Terakhir"
+    },
     "events": {
       "teamSync": "Koordinasi tim",
       "designReview": "Tinjauan desain",
@@ -133,7 +181,13 @@
       "clientMeeting": "Pertemuan klien",
       "sprintRetro": "Evaluasi sprint",
       "monthlyDemo": "Demo bulanan",
-      "releaseReview": "Tinjauan rilis"
+      "releaseReview": "Tinjauan rilis",
+      "weeklyMeeting": "Weekly Team Meeting",
+      "productLaunch": "Product Launch Event",
+      "salesTraining": "Sales Team Training Session",
+      "workshopDesign": "Workshop: Mastering Design Thinking",
+      "strategyPlanning": "Strategy Planning Session",
+      "financialReview": "Quarterly Financial Review"
     }
   },
   "pengaturan": {

@@ -12,4 +12,8 @@ export const queryKeys = {
   analytics: {
     overview: ['analytics', 'overview'] as const,
   },
+  cities: {
+    all: ['cities'] as const,
+    list: (params: any) => ['cities', 'list', params] as const,
+  },
 };
