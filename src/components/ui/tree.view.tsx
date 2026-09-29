@@ -675,10 +675,12 @@ export function TreeNodeItem({ node, depth = 0 }: TreeNodeItemProps) {
           if (isBranch) toggleExpand(node.id, e);
           selectNode(node, e);
         }}
-        style={{ paddingLeft: `${Math.max(10, depth * 22 + 8)}px` }}
+        style={{ paddingLeft: `${Math.max(6, depth * 16 + 6)}px` }}
         className={cn(
-          'flex items-center justify-between py-1.5 pr-2 rounded-xl text-xs transition-all duration-150 cursor-pointer my-0.5 border border-transparent',
-          'hover:bg-accent/60 hover:text-accent-foreground',
+          'flex flex-col sm:flex-row sm:items-center justify-between py-1.5 px-2 sm:px-2.5 rounded-xl text-xs transition-all duration-150 cursor-pointer my-0.5 border border-transparent gap-1.5 sm:gap-0',
+          node.disabled || node.data?.disabled
+            ? 'hover:bg-muted/30 text-muted-foreground/60'
+            : 'hover:bg-accent/60 hover:text-accent-foreground',
           isSelected && 'bg-primary/10 text-primary font-medium border-primary/25 shadow-2xs',
           isDropTarget && dropPosition === 'inside' && 'bg-primary/20 border-dashed border-primary',
           isDragged && 'opacity-30',
@@ -686,7 +688,7 @@ export function TreeNodeItem({ node, depth = 0 }: TreeNodeItemProps) {
         )}
       >
         {/* Left: Checkbox, Chevron, Icon, Label/Input */}
-        <div className="flex items-center gap-2 min-w-0 flex-1 mr-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1 w-full sm:w-auto mr-1 sm:mr-2">
           {multiSelect && (
             <button
               type="button"
@@ -764,15 +766,35 @@ export function TreeNodeItem({ node, depth = 0 }: TreeNodeItemProps) {
               </Button>
             </div>
           ) : (
-            <div className="flex items-center gap-2 truncate">
-              <span className="truncate text-foreground font-normal group-hover/node:text-accent-foreground">
+            <div className="flex items-center gap-1.5 sm:gap-2 truncate min-w-0 flex-1">
+              <span
+                className={cn(
+                  'truncate font-normal text-xs transition-colors',
+                  node.disabled || node.data?.disabled
+                    ? 'text-muted-foreground/45 group-hover/node:text-muted-foreground/45 italic'
+                    : 'text-foreground group-hover/node:text-accent-foreground cursor-pointer'
+                )}
+                title={`${node.label}${typeof node.subtitle === 'string' ? ` • ${node.subtitle}` : ''}`}
+              >
                 {node.label}
               </span>
 
-              {node.badge && <div>{node.badge}</div>}
+              {node.badge && (
+                <div className={cn('shrink-0', (node.disabled || node.data?.disabled) && 'opacity-60')}>
+                  {node.badge}
+                </div>
+              )}
 
               {node.subtitle && (
-                <span className="text-[10px] text-muted-foreground/80 font-mono truncate hidden sm:inline">
+                <span
+                  className={cn(
+                    'text-[10px] font-mono truncate hidden lg:inline',
+                    node.disabled || node.data?.disabled
+                      ? 'text-muted-foreground/35 group-hover/node:text-muted-foreground/35'
+                      : 'text-muted-foreground/80'
+                  )}
+                  title={typeof node.subtitle === 'string' ? node.subtitle : undefined}
+                >
                   {node.subtitle}
                 </span>
               )}
@@ -884,7 +906,7 @@ export interface TreeContentProps {
 export function TreeContent({
   emptyState,
   className,
-  maxHeight = 'max-h-[620px]',
+  maxHeight,
 }: TreeContentProps) {
   const { nodes, searchTerm } = useTreeContext();
 
@@ -893,7 +915,7 @@ export function TreeContent({
   }, [nodes, searchTerm]);
 
   return (
-    <div className={cn('p-2 overflow-y-auto min-h-[250px] scrollbar-thin', maxHeight, className)}>
+    <div className={cn('p-2', maxHeight ? cn('overflow-y-auto scrollbar-thin', maxHeight) : '', className)}>
       {filteredTree.length === 0 ? (
         emptyState || (
           <div className="py-12 px-4 text-center">

@@ -8,7 +8,13 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
     <QueryProvider>
       <ThemeProvider>
         {children}
-        <Toaster position="top-right" richColors closeButton />
+        <Toaster
+          position="top-right"
+          closeButton
+          toastOptions={{
+            duration: 4000,
+          }}
+        />
       </ThemeProvider>
     </QueryProvider>
   );

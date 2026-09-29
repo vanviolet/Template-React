@@ -1,272 +1,253 @@
-/* FullCalendar modern SaaS theme matching Fullcalendar2.jpg */
+/* FullCalendar Ultra-Clean Modern Minimalist Theme matching Fullcalendar2.jpg */
+
 .calendar-shell {
-  --fc-border-color: var(--border);
+  /* Subtle, delicate hairline border tokens */
+  --fc-classic-border: color-mix(in oklch, var(--border) 55%, transparent);
+  --fc-classic-strong-border: color-mix(in oklch, var(--border) 75%, transparent);
+  --fc-classic-background: var(--card);
+  --fc-classic-foreground: var(--foreground);
+  --fc-classic-muted: var(--muted);
+  --fc-classic-muted-foreground: var(--muted-foreground);
+  --fc-classic-highlight: color-mix(in oklch, var(--primary) 6%, transparent);
+  --fc-classic-today: color-mix(in oklch, var(--primary) 4%, transparent);
+  --fc-classic-now: var(--primary);
+
+  --fc-border-color: color-mix(in oklch, var(--border) 55%, transparent);
   --fc-page-bg-color: transparent;
   --fc-neutral-bg-color: var(--muted);
   --fc-today-bg-color: color-mix(in oklch, var(--primary) 4%, transparent);
   --fc-list-event-hover-bg-color: var(--accent);
-  --fc-highlight-color: color-mix(in oklch, var(--primary) 8%, transparent);
+  --fc-highlight-color: color-mix(in oklch, var(--primary) 6%, transparent);
+
   min-width: 0;
   font-family: inherit;
   overflow-x: auto;
+  border-radius: 1rem;
+  background-color: var(--card);
 }
 
-/* Ensure horizontal scrollability on narrow viewports so days don't collapse */
+.dark .calendar-shell {
+  --fc-classic-border: color-mix(in oklch, var(--border) 35%, transparent);
+  --fc-classic-strong-border: color-mix(in oklch, var(--border) 55%, transparent);
+  --fc-classic-background: var(--card);
+  --fc-classic-foreground: var(--foreground);
+  --fc-classic-muted: var(--muted);
+  --fc-classic-muted-foreground: var(--muted-foreground);
+  --fc-classic-highlight: color-mix(in oklch, var(--primary) 10%, transparent);
+  --fc-classic-today: color-mix(in oklch, var(--primary) 8%, transparent);
+  --fc-classic-now: var(--primary);
+  --fc-border-color: color-mix(in oklch, var(--border) 35%, transparent);
+}
+
+/* Ensure horizontal scrollability on narrow viewports */
 .calendar-shell .fc-view-harness {
   overflow-x: auto !important;
+  min-height: 540px;
 }
 
-.calendar-shell .fc-scrollgrid {
-  min-width: 720px;
-  border: 1px solid var(--border) !important;
-  border-radius: 1rem;
-  overflow: hidden;
-  background-color: var(--card);
-}
-
+/* ELEGANT, DELICATE GRID BORDERS (Thin hairline borders, strictly no heavy lines) */
+.calendar-shell .fc-classic-wsy,
 .calendar-shell .fc-theme-standard td,
 .calendar-shell .fc-theme-standard th {
-  border-color: color-mix(in oklch, var(--border) 60%, transparent);
+  border-style: solid !important;
+  border-width: 1px !important;
+  border-color: var(--fc-classic-border) !important;
 }
 
-.calendar-shell .fc-scrollgrid-section > td {
-  border-top-width: 1px;
+/* Outer grid border and rounded shell */
+.calendar-shell .fc-scrollgrid {
+  min-width: 720px;
+  border: 1px solid var(--fc-classic-border) !important;
+  border-radius: 1rem !important;
+  overflow: hidden !important;
+  background-color: var(--card) !important;
 }
 
-/* Column Header Cells (Days: 04 MON, 05 TUE, ...) */
-.calendar-shell .fc-col-header-cell {
-  background-color: var(--card);
-  padding: 0.5rem 0.25rem;
-  border-bottom: 1px solid var(--border) !important;
+/* Header Cells (Days: 04 MON, 05 TUE, ...) */
+.calendar-shell .fc-col-header-cell,
+.calendar-shell .fc-day-header {
+  background-color: var(--card) !important;
+  padding: 0.65rem 0.25rem !important;
+  border-bottom: 1px solid var(--fc-classic-border) !important;
+  border-inline-end: 1px solid var(--fc-classic-border) !important;
+  text-align: center !important;
 }
 
 .calendar-shell .fc-col-header-cell-cushion {
-  color: var(--muted-foreground);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  color: var(--muted-foreground) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
   text-decoration: none !important;
-  padding: 0.35rem 0.5rem;
-  display: inline-block;
-  white-space: nowrap;
+  padding: 0.35rem 0.5rem !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
 }
 
 .calendar-shell .fc-day-today .fc-col-header-cell-cushion {
-  color: var(--primary);
-  font-weight: 800;
+  color: var(--primary) !important;
+  font-weight: 800 !important;
 }
 
 /* Time Gutter and Slot styling (9 AM, 10 AM, etc.) */
 .calendar-shell .fc-timegrid-slot-label {
-  vertical-align: middle;
+  vertical-align: middle !important;
+  border-inline-end: 1px solid var(--fc-classic-border) !important;
+  background-color: var(--card) !important;
 }
 
 .calendar-shell .fc-timegrid-slot-label-cushion {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--muted-foreground);
-  padding-right: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
+  font-size: 0.7rem !important;
+  font-weight: 600 !important;
+  color: var(--muted-foreground) !important;
+  opacity: 0.8;
+  padding-right: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  white-space: nowrap !important;
 }
 
 .calendar-shell .fc-timegrid-axis-frame {
-  justify-content: center;
-  align-items: center;
-  padding: 0.25rem;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0.35rem !important;
 }
 
 .calendar-shell .fc-timegrid-axis-cushion {
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: var(--muted-foreground);
-  text-transform: uppercase;
-  white-space: nowrap;
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  color: var(--muted-foreground) !important;
+  opacity: 0.75;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
 }
 
+/* Clean, airy time slots */
 .calendar-shell .fc-timegrid-slot {
-  height: 3rem;
-  cursor: pointer;
+  height: 3.5rem !important;
+  cursor: pointer !important;
+  border-bottom: 1px solid var(--fc-classic-border) !important;
+  border-inline-end: 1px solid var(--fc-classic-border) !important;
+  transition: background-color 100ms ease;
 }
 
 .calendar-shell .fc-timegrid-slot:hover {
-  background-color: color-mix(in oklch, var(--primary) 2%, transparent);
+  background-color: color-mix(in oklch, var(--primary) 1.5%, transparent) !important;
 }
 
-.calendar-shell .fc-timegrid-slot-minor {
-  border-top-style: dotted !important;
-  border-top-color: color-mix(in oklch, var(--border) 40%, transparent) !important;
+/* Minor slot lines (half-hour slots): very subtle, faint dashed line */
+.calendar-shell .fc-timegrid-slot-minor,
+.calendar-shell .fc-classic-TN2 {
+  border-top-style: dashed !important;
+  border-top-width: 1px !important;
+  border-top-color: color-mix(in oklch, var(--border) 30%, transparent) !important;
+}
+
+/* Column dividers in timegrid */
+.calendar-shell .fc-timegrid-col {
+  border-inline-end: 1px solid var(--fc-classic-border) !important;
 }
 
 /* Month view day cell */
 .calendar-shell .fc-daygrid-day-frame {
-  min-height: 6.5rem;
-  padding: 0.25rem;
+  min-height: 6.5rem !important;
+  padding: 0.35rem !important;
   transition: background-color 150ms ease;
   cursor: pointer;
+  border-bottom: 1px solid var(--fc-classic-border) !important;
+  border-inline-end: 1px solid var(--fc-classic-border) !important;
 }
 
 .calendar-shell .fc-daygrid-day-number {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--foreground);
-  padding: 0.35rem 0.5rem;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: var(--foreground) !important;
+  padding: 0.35rem 0.5rem !important;
   text-decoration: none !important;
-  border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1.5rem;
-  height: 1.5rem;
-  cursor: pointer;
+  border-radius: 9999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 1.5rem !important;
+  height: 1.5rem !important;
+  cursor: pointer !important;
 }
 
 .calendar-shell .fc-day-other .fc-daygrid-day-number {
-  color: var(--muted-foreground);
-  opacity: 0.45;
+  color: var(--muted-foreground) !important;
+  opacity: 0.45 !important;
 }
 
 .calendar-shell .fc-day-today .fc-daygrid-day-number {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
 }
 
 .calendar-shell .fc-daygrid-day:hover {
-  background-color: color-mix(in oklch, var(--primary) 2%, transparent);
+  background-color: color-mix(in oklch, var(--primary) 1.5%, transparent) !important;
 }
 
-/* All-Day / Multi-Day Events Section Polish */
-.calendar-shell .fc-timegrid-divider {
-  border-top: 1px solid var(--border) !important;
-  border-bottom: 1px solid var(--border) !important;
+/* All-Day / Multi-Day Events Section Divider */
+.calendar-shell .fc-timegrid-divider,
+.calendar-shell .fc-classic-8ub {
+  border-top: 1px solid var(--fc-classic-border) !important;
+  border-bottom: 1px solid var(--fc-classic-border) !important;
+  background-color: color-mix(in oklch, var(--muted) 40%, transparent) !important;
+  height: 2px !important;
 }
 
-/* EVENT CARD OVERRIDES - Floating SaaS Cards matching Fullcalendar2.jpg */
-.calendar-shell .fc-timegrid-event-harness > .fc-timegrid-event,
-.calendar-shell .fc-daygrid-event-harness > .fc-daygrid-event {
+/* COMPLETELY STRIP DEFAULT FULLCALENDAR WRAPPER BORDERS
+   This eliminates any accidental red borders, double borders, or thick default outlines.
+   All event styling is cleanly handled by our custom EventCard component! */
+.calendar-shell .fc-timegrid-event-harness,
+.calendar-shell .fc-timegrid-event,
+.calendar-shell .fc-daygrid-event-harness,
+.calendar-shell .fc-daygrid-event,
+.calendar-shell .fc-classic-1Wx,
+.calendar-shell .fc-classic-A3h,
+.calendar-shell .fc-classic-yKG,
+.calendar-shell .fc-classic-ku3,
+.calendar-shell .fc-classic-zi1,
+.calendar-shell .fc-classic-Z7Q,
+.calendar-shell .fc-classic-2qh {
   border: none !important;
-  margin: 2px 3px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.calendar-shell .fc-timegrid-event-harness > .fc-timegrid-event {
+  inset-inline-start: 2px !important;
+  inset-inline-end: 2px !important;
+  margin-top: 1px !important;
+  margin-bottom: 1px !important;
   border-radius: 0.75rem !important;
   overflow: visible !important;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04) !important;
   cursor: pointer !important;
-  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms ease !important;
 }
 
-/* Card Hover Elevation Effect matching user request */
+/* Smooth GPU accelerated hover elevation */
 .calendar-shell .fc-timegrid-event:hover,
 .calendar-shell .fc-daygrid-event:hover {
-  transform: translateY(-2px) scale(1.01) !important;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -4px rgba(0, 0, 0, 0.08) !important;
-  z-index: 50 !important;
-  cursor: pointer !important;
-}
-
-/* Event Tones matching Fullcalendar2.jpg soft pastel cards with dark text */
-/* Tone 1: Soft Blue (Brainstorming, Project Review, Sales Training) */
-.calendar-shell .fc-event-primary {
-  background-color: #dbeafe !important;
-  border-left: 4px solid #3b82f6 !important;
-  color: #1e3a8a !important;
-}
-
-.dark .calendar-shell .fc-event-primary {
-  background-color: #1e293b !important;
-  border-left: 4px solid #60a5fa !important;
-  color: #bfdbfe !important;
-}
-
-/* Tone 2: Soft Sky/Info */
-.calendar-shell .fc-event-info {
-  background-color: #e0f2fe !important;
-  border-left: 4px solid #0284c7 !important;
-  color: #0c4a6e !important;
-}
-
-.dark .calendar-shell .fc-event-info {
-  background-color: #0f2d42 !important;
-  border-left: 4px solid #38bdf8 !important;
-  color: #bae6fd !important;
-}
-
-/* Tone 3: Soft Amber / Warm Peach (Workshop Mastering Design Thinking) */
-.calendar-shell .fc-event-amber {
-  background-color: #ffedd5 !important;
-  border-left: 4px solid #f97316 !important;
-  color: #7c2d12 !important;
-}
-
-.dark .calendar-shell .fc-event-amber {
-  background-color: #3b1d0e !important;
-  border-left: 4px solid #fb923c !important;
-  color: #fed7aa !important;
-}
-
-/* Tone 4: Soft Purple / Violet (Strategy Planning, Multi-day Summit) */
-.calendar-shell .fc-event-purple {
-  background-color: #ede9fe !important;
-  border-left: 4px solid #8b5cf6 !important;
-  color: #4c1d95 !important;
-}
-
-.dark .calendar-shell .fc-event-purple {
-  background-color: #2e1753 !important;
-  border-left: 4px solid #a78bfa !important;
-  color: #ddd6fe !important;
-}
-
-/* Tone 5: Soft Emerald / Green (Holidays, Wellness retreat) */
-.calendar-shell .fc-event-success {
-  background-color: #d1fae5 !important;
-  border-left: 4px solid #10b981 !important;
-  color: #064e3b !important;
-}
-
-.dark .calendar-shell .fc-event-success {
-  background-color: #092c20 !important;
-  border-left: 4px solid #34d399 !important;
-  color: #a7f3d0 !important;
-}
-
-.calendar-shell .fc-event-warning {
-  background-color: #fef3c7 !important;
-  border-left: 4px solid #f59e0b !important;
-  color: #78350f !important;
-}
-
-.dark .calendar-shell .fc-event-warning {
-  background-color: #3d2406 !important;
-  border-left: 4px solid #fbbf24 !important;
-  color: #fde68a !important;
-}
-
-/* Now Indicator line */
-.calendar-shell .fc-timegrid-now-indicator-line {
-  border-color: #ef4444 !important;
-  border-width: 2px !important;
-}
-
-.calendar-shell .fc-timegrid-now-indicator-arrow {
-  border-color: #ef4444 !important;
+  z-index: 40 !important;
 }
 
 /* List view polish */
 .calendar-shell .fc-list-day-cushion {
   background-color: var(--muted) !important;
-  font-weight: 700;
-  font-size: 0.75rem;
+  font-weight: 700 !important;
+  font-size: 0.75rem !important;
 }
 
 .calendar-shell .fc-list-event:hover td {
   background-color: var(--accent) !important;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
-/* Hide default FullCalendar toolbar - we provide our sleek customized one */
+/* Hide default FullCalendar built-in toolbar */
 .calendar-shell .fc-toolbar {
-  display: none;
+  display: none !important;
 }

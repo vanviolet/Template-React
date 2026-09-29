@@ -14,6 +14,7 @@ import {
   Moon,
   Globe,
   FolderTree,
+  ListOrdered,
   LucideIcon,
 } from 'lucide-react';
 
@@ -132,6 +133,15 @@ export const APP_NAV_GROUPS: NavGroupConfig[] = [
         badge: 'New',
       },
       {
+        id: 'wizard',
+        labelKey: 'nav.wizard',
+        defaultLabel: 'Wizard & Steps',
+        path: '/wizard',
+        icon: ListOrdered,
+        keywords: ['wizard', 'step', 'stepper', 'tahapan', 'alur', 'event', 'planner'],
+        badge: 'New',
+      },
+      {
         id: 'analitik',
         labelKey: 'nav.analitik',
         defaultLabel: 'Analitik',
@@ -170,6 +180,16 @@ export const QUICK_ACTIONS_REGISTRY: QuickActionConfig[] = [
     keywords: ['create', 'new', 'user', 'tambah', 'pengguna'],
     action: ({ navigate }) => {
       navigate('/pengguna?action=add');
+    },
+  },
+  {
+    id: 'open-wizard',
+    titleKey: 'nav.wizard',
+    defaultTitle: 'Buka Halaman Wizard & Steps',
+    icon: ListOrdered,
+    keywords: ['wizard', 'step', 'planner', 'alur', 'event'],
+    action: ({ navigate }) => {
+      navigate('/wizard');
     },
   },
   {

@@ -9,6 +9,48 @@
     <meta property="og:description" content="Minimal, clean & modern admin dashboard template with fixed sidebar, fixed header, React Router, Zustand, i18n, TanStack Query, TanStack Form, Zod, react-number-format, and shadcn/ui." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (function() {
+        if (typeof window !== 'undefined') {
+          // 1. Capture-phase error handler for ResizeObserver benign notifications
+          window.addEventListener('error', function(e) {
+            var msg = e.message || (e.error && e.error.message) || '';
+            if (typeof msg === 'string' && msg.indexOf('ResizeObserver') !== -1) {
+              e.stopImmediatePropagation();
+              e.stopPropagation();
+              e.preventDefault();
+              return false;
+            }
+          }, true);
+
+          // 2. Global error handler fallback
+          var origOnError = window.onerror;
+          window.onerror = function(msg, url, line, col, err) {
+            if (typeof msg === 'string' && msg.indexOf('ResizeObserver') !== -1) {
+              return true;
+            }
+            if (origOnError) return origOnError.apply(this, arguments);
+            return false;
+          };
+
+          // 3. Safe requestAnimationFrame wrapper for ResizeObserver to prevent layout thrashing loops
+          if (window.ResizeObserver) {
+            var NativeResizeObserver = window.ResizeObserver;
+            window.ResizeObserver = function(callback) {
+              return new NativeResizeObserver(function(entries, observer) {
+                window.requestAnimationFrame(function() {
+                  callback(entries, observer);
+                });
+              });
+            };
+            window.ResizeObserver.prototype = NativeResizeObserver.prototype;
+          }
+        }
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
   </head>
   <body class="bg-background text-foreground font-sans antialiased selection:bg-slate-200 dark:selection:bg-slate-800">
     <div id="root"></div>

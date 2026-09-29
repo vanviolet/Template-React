@@ -37,80 +37,83 @@ export default function CalendarView() {
   const [createInitialDate, setCreateInitialDate] = React.useState<Date>(new Date());
   const [activeEvent, setActiveEvent] = React.useState<CalendarDemoEvent | null>(null);
   const [isDetailOpen, setIsDetailOpen] = React.useState(false);
-  const [showPickerShowcase, setShowPickerShowcase] = React.useState(true);
 
-  // Sync calendar with external controls
-  const handleDateChange = (date: Date) => {
+  // Sync calendar with external controls (memoized to eliminate lag)
+  const handleDateChange = React.useCallback((date: Date) => {
     setCurrentDate(date);
     const api = calendarRef.current?.getApi();
     if (api) {
       api.gotoDate(date);
     }
-  };
+  }, []);
 
-  const handleViewChange = (view: string) => {
+  const handleViewChange = React.useCallback((view: string) => {
     setCurrentView(view);
     const api = calendarRef.current?.getApi();
     if (api) {
       api.changeView(view);
     }
-  };
+  }, []);
 
-  const handlePrev = () => {
+  const handlePrev = React.useCallback(() => {
     const api = calendarRef.current?.getApi();
     if (api) {
       api.prev();
       setCurrentDate(api.getDate());
     }
-  };
+  }, []);
 
-  const handleNext = () => {
+  const handleNext = React.useCallback(() => {
     const api = calendarRef.current?.getApi();
     if (api) {
       api.next();
       setCurrentDate(api.getDate());
     }
-  };
+  }, []);
 
-  const handleToday = () => {
+  const handleToday = React.useCallback(() => {
     const today = new Date();
     setCurrentDate(today);
     const api = calendarRef.current?.getApi();
     if (api) {
       api.today();
     }
-  };
+  }, []);
 
-  // FullCalendar event & date click handlers
-  const handleDateClick = (info: DateClickInfo) => {
+  // FullCalendar event & date click handlers (memoized)
+  const handleDateClick = React.useCallback((info: DateClickInfo) => {
     setCurrentDate(info.date);
     setCreateInitialDate(info.date);
     setIsCreateOpen(true);
-  };
+  }, []);
 
-  const handleEventClick = (info: EventClickInfo) => {
-    const found = events.find((e) => e.id === info.event.id);
-    if (found) {
-      setActiveEvent(found);
-      setIsDetailOpen(true);
-      setCurrentDate(new Date(found.start));
-    }
-  };
+  const handleEventClick = React.useCallback((info: EventClickInfo) => {
+    const eventId = info.event.id;
+    setEvents((currentEvents) => {
+      const found = currentEvents.find((e) => e.id === eventId);
+      if (found) {
+        setActiveEvent(found);
+        setIsDetailOpen(true);
+        setCurrentDate(new Date(found.start));
+      }
+      return currentEvents;
+    });
+  }, []);
 
-  const handleSelectEventFromRibbon = (event: CalendarDemoEvent) => {
+  const handleSelectEventFromRibbon = React.useCallback((event: CalendarDemoEvent) => {
     setActiveEvent(event);
     setIsDetailOpen(true);
     setCurrentDate(new Date(event.start));
     calendarRef.current?.getApi()?.gotoDate(new Date(event.start));
-  };
+  }, []);
 
-  const handleAddEvent = (newEvent: CalendarDemoEvent) => {
+  const handleAddEvent = React.useCallback((newEvent: CalendarDemoEvent) => {
     setEvents((prev) => [newEvent, ...prev]);
-  };
+  }, []);
 
-  const handleDeleteEvent = (id: string) => {
+  const handleDeleteEvent = React.useCallback((id: string) => {
     setEvents((prev) => prev.filter((e) => e.id !== id));
-  };
+  }, []);
 
   // Filter events according to selected tab
   const filteredEvents = React.useMemo(() => {
@@ -131,7 +134,8 @@ export default function CalendarView() {
 
   // Today's summary counts
   const todaySummary = React.useMemo(() => {
-    const todayEvents = events.filter((e) => isSameDay(new Date(e.start), new Date()));
+    const today = new Date();
+    const todayEvents = events.filter((e) => isSameDay(new Date(e.start), today));
     return {
       meetings: todayEvents.filter((e) => e.category === 'meetings').length,
       events: todayEvents.filter((e) => e.category !== 'meetings').length,
@@ -180,7 +184,7 @@ export default function CalendarView() {
         {/* FullCalendar Card */}
         <section
           aria-label={t('calendar.title')}
-          className="min-w-0 rounded-2xl border border-border/80 bg-card p-3 sm:p-5 shadow-xs"
+          className="min-w-0 rounded-2xl border border-border/90 bg-card p-3 sm:p-5 shadow-xs transition-shadow"
         >
           <FullCalendar
             ref={calendarRef}
@@ -188,10 +192,7 @@ export default function CalendarView() {
             events={filteredEvents}
             dateClick={handleDateClick}
             eventClick={handleEventClick}
-            headerToolbar={false} /* Custom toolbar used */
-            dayCellClassNames={(info) =>
-              isSameDay(info.date, currentDate) ? ['fc-day-selected'] : []
-            }
+            headerToolbar={false}
           />
         </section>
 
