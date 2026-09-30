@@ -245,6 +245,22 @@
     }
   },
   "tree": {
+    "objectivesTitle": "Objectives",
+    "ownedByMe": "Milik Saya",
+    "addObjective": "Tambah Objective",
+    "addSubObjective": "Tambah Sub-Objective",
+    "editObjective": "Ubah Objective",
+    "deleteObjective": "Hapus Objective",
+    "markActive": "Tandai Aktif",
+    "markCompleted": "Tandai Selesai",
+    "objectiveTitle": "Judul Objective",
+    "timeframe": "Jangka Waktu",
+    "daysCurrent": "Hari Berjalan",
+    "daysTotal": "Total Hari",
+    "keyResults": "Key Results",
+    "owner": "Penanggung Jawab",
+    "create": "Buat",
+    "add": "Tambah",
     "pageTitle": "Hierarki Konfigurasi Gelombang Pendaftaran",
     "pageSubtitle": "Data hierarki dinamis terhubung ke Master Data API. Mendukung aksi Generate Semua, Tambah per-item, Batch Kuota, dan Enable/Disable Akses & Relasi Berkas.",
     "liveMasterApi": "Live Master Data API",
@@ -466,7 +482,17 @@
       "readOnly": "Hanya Baca",
       "editable": "Edit",
       "enterFullscreen": "Mode Layar Penuh (Zen)",
-      "exitFullscreen": "Keluar Layar Penuh"
+      "exitFullscreen": "Keluar Layar Penuh",
+      "stickyOn": "Toolbar Menempel di Atas saat Scroll (Aktif - klik untuk matikan)",
+      "stickyOff": "Toolbar Mengikuti Halaman (Nonaktif - klik untuk aktifkan)"
+    },
+    "quickInsert": {
+      "title": "Menu Sisipkan Cepat",
+      "button": "Sisipkan",
+      "quickHint": "Akses instan",
+      "expand": "Buka Menu Cepat Sisipkan",
+      "minimize": "Kecilkan Menu",
+      "scrollToTop": "Gulir Kembali ke Atas Dokumen"
     },
     "block": {
       "paragraph": "Paragraf",

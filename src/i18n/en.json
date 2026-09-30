@@ -245,6 +245,22 @@
     }
   },
   "tree": {
+    "objectivesTitle": "Objectives",
+    "ownedByMe": "Owned by me",
+    "addObjective": "Add Objective",
+    "addSubObjective": "Add Sub-Objective",
+    "editObjective": "Edit Objective",
+    "deleteObjective": "Delete Objective",
+    "markActive": "Mark as active",
+    "markCompleted": "Mark as completed",
+    "objectiveTitle": "Objective Title",
+    "timeframe": "Timeframe",
+    "daysCurrent": "Days Passed",
+    "daysTotal": "Total Days",
+    "keyResults": "Key Results",
+    "owner": "Owner",
+    "create": "Create",
+    "add": "Add",
     "pageTitle": "Registration Wave Configuration Hierarchy",
     "pageSubtitle": "Dynamic hierarchy connected to Master Data API. Supports Batch Quota, Add per-item, and Enable/Disable Access & Document Relations.",
     "liveMasterApi": "Live Master Data API",
@@ -466,7 +482,17 @@
       "readOnly": "Read Only",
       "editable": "Edit",
       "enterFullscreen": "Fullscreen Mode (Zen)",
-      "exitFullscreen": "Exit Fullscreen"
+      "exitFullscreen": "Exit Fullscreen",
+      "stickyOn": "Sticky Toolbar (Active - click to disable)",
+      "stickyOff": "Standard Toolbar (Inactive - click to enable)"
+    },
+    "quickInsert": {
+      "title": "Quick Insert Menu",
+      "button": "Insert",
+      "quickHint": "Instant access",
+      "expand": "Open Quick Insert Menu",
+      "minimize": "Minimize Menu",
+      "scrollToTop": "Scroll Back to Top"
     },
     "block": {
       "paragraph": "Paragraph",

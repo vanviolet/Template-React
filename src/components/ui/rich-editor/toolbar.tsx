@@ -70,6 +70,8 @@ import {
   Highlighter,
   Table as TableIcon,
   Image as ImageIcon,
+  Pin,
+  PinOff,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -92,6 +94,8 @@ interface ToolbarProps {
   isReadOnly: boolean;
   onToggleReadOnly: () => void;
   disabled?: boolean;
+  isSticky?: boolean;
+  onToggleSticky?: () => void;
 }
 
 const TEXT_COLORS = [
@@ -124,6 +128,8 @@ export function Toolbar({
   isReadOnly,
   onToggleReadOnly,
   disabled = false,
+  isSticky = true,
+  onToggleSticky,
 }: ToolbarProps) {
   const [editor] = useLexicalComposerContext();
   const { t } = useTranslation();
@@ -393,7 +399,16 @@ export function Toolbar({
   const isControlsDisabled = disabled || isReadOnly;
 
   return (
-    <div className="flex flex-wrap items-center gap-1 p-1.5 border-b border-border/80 bg-muted/30 backdrop-blur-xs select-none">
+    <div
+      className={cn(
+        'flex flex-wrap items-center gap-1 p-1.5 border-b border-border/80 bg-card/95 backdrop-blur-md select-none transition-all duration-150',
+        isSticky &&
+          (isFullscreen
+            ? 'sticky top-0 z-30 shadow-xs'
+            : 'sticky top-16 z-[15] shadow-xs rounded-t-xl'),
+        !isSticky && 'relative rounded-t-xl'
+      )}
+    >
       {/* Undo & Redo */}
       <div className="flex items-center gap-0.5">
         <button
@@ -752,8 +767,31 @@ export function Toolbar({
         </button>
       </div>
 
-      {/* Right-aligned Utilities: Read-only toggle & Fullscreen toggle */}
+      {/* Right-aligned Utilities: Sticky toggle, Read-only toggle & Fullscreen toggle */}
       <div className="ml-auto flex items-center gap-1 pl-2">
+        {onToggleSticky && (
+          <button
+            type="button"
+            onClick={onToggleSticky}
+            title={
+              isSticky
+                ? t('editor.toolbar.stickyOn', 'Toolbar Menempel di Atas saat Scroll (Aktif - klik untuk matikan)')
+                : t('editor.toolbar.stickyOff', 'Toolbar Mengikuti Halaman (Nonaktif - klik untuk aktifkan)')
+            }
+            className={cn(
+              'p-1.5 rounded-md transition-colors cursor-pointer text-xs flex items-center gap-1 px-2',
+              isSticky
+                ? 'bg-primary/10 text-primary font-medium'
+                : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+            )}
+          >
+            {isSticky ? <Pin className="h-3.5 w-3.5" /> : <PinOff className="h-3.5 w-3.5" />}
+            <span className="hidden xl:inline text-[11px]">
+              {isSticky ? 'Sticky' : 'Normal'}
+            </span>
+          </button>
+        )}
+
         <button
           type="button"
           onClick={onToggleReadOnly}

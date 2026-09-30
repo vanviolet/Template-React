@@ -33,6 +33,7 @@ import { InsertTableDialog } from './rich-editor/plugins/insert.table.dialog';
 import { InsertImageDialog } from './rich-editor/plugins/insert.image.dialog';
 import { TableActionMenu } from './rich-editor/plugins/table.action.menu';
 import { TableResizerPlugin } from './rich-editor/plugins/table.resizer.plugin';
+import { QuickInsertDock } from './rich-editor/plugins/quick.insert.dock';
 import { cn } from '@/utils/cn';
 
 export function RichEditor({
@@ -61,6 +62,25 @@ export function RichEditor({
   const [imageDialogOpen, setImageDialogOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [internalReadOnly, setInternalReadOnly] = useState(controlledReadOnly);
+  const [isSticky, setIsSticky] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('editor_toolbar_sticky');
+      return stored !== 'false';
+    }
+    return true;
+  });
+
+  const handleToggleSticky = useCallback(() => {
+    setIsSticky((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem('editor_toolbar_sticky', next ? 'true' : 'false');
+      } catch {
+        // ignore
+      }
+      return next;
+    });
+  }, []);
 
   useEffect(() => {
     setInternalReadOnly(controlledReadOnly);
@@ -122,13 +142,14 @@ export function RichEditor({
     <div className={cn('w-full flex flex-col space-y-1.5', className)}>
       <div
         className={cn(
-          'relative rounded-xl border border-border bg-card text-card-foreground transition-all duration-200 overflow-hidden shadow-2xs',
+          'relative rounded-xl border border-border bg-card text-card-foreground transition-all duration-200 shadow-2xs',
+          isFullscreen
+            ? 'fixed inset-4 z-50 rounded-2xl border-border bg-background shadow-2xl flex flex-col max-h-[calc(100vh-2rem)] overflow-hidden'
+            : 'overflow-visible',
           error
             ? 'border-destructive ring-1 ring-destructive/40'
             : 'focus-within:border-primary/70 focus-within:ring-2 focus-within:ring-primary/20 hover:border-border/90',
-          disabled && 'opacity-60 pointer-events-none bg-muted/20',
-          isFullscreen &&
-            'fixed inset-4 z-50 rounded-2xl border-border bg-background shadow-2xl flex flex-col max-h-[calc(100vh-2rem)]'
+          disabled && 'opacity-60 pointer-events-none bg-muted/20'
         )}
       >
         <LexicalComposer initialConfig={initialConfig}>
@@ -143,6 +164,8 @@ export function RichEditor({
               isReadOnly={internalReadOnly}
               onToggleReadOnly={handleToggleReadOnly}
               disabled={disabled}
+              isSticky={isSticky}
+              onToggleSticky={handleToggleSticky}
             />
           )}
 
@@ -229,6 +252,18 @@ export function RichEditor({
           {/* Bottom Status Bar */}
           {showStatusBar && (
             <StatusBar enableMarkdownShortcuts={enableMarkdownShortcuts} />
+          )}
+
+          {/* Floating Quick Insert Dock & Popover */}
+          {!internalReadOnly && !disabled && (
+            <QuickInsertDock
+              onOpenTableDialog={() => setTableDialogOpen(true)}
+              onOpenImageDialog={() => setImageDialogOpen(true)}
+              onOpenLinkDialog={() => setLinkDialogOpen(true)}
+              isStickyToolbar={isSticky}
+              onToggleStickyToolbar={handleToggleSticky}
+              disabled={internalReadOnly || disabled}
+            />
           )}
         </LexicalComposer>
       </div>

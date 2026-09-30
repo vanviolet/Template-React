@@ -1,0 +1,173 @@
+import { GelombangPendaftaranConfig } from './types';
+
+export const INITIAL_CONFIG: GelombangPendaftaranConfig = {
+  id_gelombang: 'gel-1-2026-genap',
+  gelombang_nama: 'Gelombang 1 2026 Genap',
+  tahun_akademik: '2026',
+  semester: 'Genap',
+  prodi: [
+    {
+      id: 'ti-s1',
+      nama_prodi: 'S1 Teknik Informatika',
+      kode: 'TI-01',
+      fakultas: 'Fakultas Teknologi Informasi',
+      kuota_shift: [
+        {
+          id_pilihan_shift: 1,
+          nama_shift: 'Reguler Pagi (Shift 1)',
+          jam: '08:00 - 15:30',
+          jumlah_pendaftar_mahasiswa_n: 50,
+          jumlah_pendaftar_mahasiswa_d: 10,
+        },
+        {
+          id_pilihan_shift: 2,
+          nama_shift: 'Reguler Malam (Shift 2)',
+          jam: '17:00 - 21:30',
+          jumlah_pendaftar_mahasiswa_n: 35,
+          jumlah_pendaftar_mahasiswa_d: 5,
+        },
+      ],
+    },
+    {
+      id: 'si-s1',
+      nama_prodi: 'S1 Sistem Informasi',
+      kode: 'SI-02',
+      fakultas: 'Fakultas Teknologi Informasi',
+      kuota_shift: [
+        {
+          id_pilihan_shift: 1,
+          nama_shift: 'Reguler Pagi (Shift 1)',
+          jam: '08:00 - 15:30',
+          jumlah_pendaftar_mahasiswa_n: 45,
+          jumlah_pendaftar_mahasiswa_d: 5,
+        },
+      ],
+    },
+    {
+      id: 'bd-s1',
+      nama_prodi: 'S1 Bisnis Digital',
+      kode: 'BD-04',
+      fakultas: 'Fakultas Ekonomi & Bisnis',
+      kuota_shift: [
+        {
+          id_pilihan_shift: 1,
+          nama_shift: 'Reguler Pagi (Shift 1)',
+          jam: '08:00 - 15:30',
+          jumlah_pendaftar_mahasiswa_n: 40,
+          jumlah_pendaftar_mahasiswa_d: 0,
+        },
+      ],
+    },
+  ],
+  pilihan_jenis_pendaftaran: [
+    {
+      id: 1,
+      nama_jenis: 'Mahasiswa Baru Reguler',
+      deskripsi: 'Lulusan SMA/SMK/MA sederajat',
+      untuk_cmaba_non_disabilitas: true,
+      untuk_cmaba_disabilitas: true,
+    },
+    {
+      id: 2,
+      nama_jenis: 'Pindahan / Transfer Kredit Antar Kampus',
+      deskripsi: 'Mahasiswa transfer dari perguruan tinggi lain',
+      untuk_cmaba_non_disabilitas: true,
+      untuk_cmaba_disabilitas: false,
+    },
+    {
+      id: 3,
+      nama_jenis: 'RPL (Rekognisi Pembelajaran Lampau)',
+      deskripsi: 'Konversi pengalaman kerja menjadi SKS',
+      untuk_cmaba_non_disabilitas: false,
+      untuk_cmaba_disabilitas: false,
+    },
+  ],
+  pilihan_jalur_pendaftaran: [
+    {
+      id: 101,
+      nama_jalur: 'Jalur Prestasi Akademik (SNBP / Rapor)',
+      deskripsi: 'Seleksi nilai rapor & sertifikat akademik',
+      untuk_cmaba_non_disabilitas: true,
+      untuk_cmaba_disabilitas: true,
+    },
+    {
+      id: 102,
+      nama_jalur: 'Jalur Beasiswa KIP Kuliah & Kemitraan',
+      deskripsi: 'Bantuan biaya kuliah untuk mahasiswa berprestasi',
+      untuk_cmaba_non_disabilitas: true,
+      untuk_cmaba_disabilitas: true,
+    },
+    {
+      id: 103,
+      nama_jalur: 'Jalur Tes Potensi Skolastik (UTBK / Mandiri)',
+      deskripsi: 'Ujian saringan masuk tertulis berbasis komputer',
+      untuk_cmaba_non_disabilitas: true,
+      untuk_cmaba_disabilitas: false,
+    },
+    {
+      id: 104,
+      nama_jalur: 'Jalur Afirmasi Khusus Disabilitas',
+      deskripsi: 'Jalur inklusif ramah disabilitas dengan tes adaptif',
+      untuk_cmaba_non_disabilitas: false,
+      untuk_cmaba_disabilitas: true,
+    },
+  ],
+  berkas_wajib: {
+    untuk_cmaba_n_dan_d: [
+      {
+        id_berkas_pendaftaran: 'doc-ktp',
+        nama_berkas: 'Kartu Tanda Penduduk (KTP) / Paspor',
+        kategori: 'Identitas',
+        wajib_untuk_wni: true,
+        wajib_untuk_wna: true,
+        untuk_jenis_pendaftaran: [1, 2],
+        untuk_jalur_pendaftaran: [101, 102, 103, 104],
+        untuk_pilihan_shift_pendaftaran: [1, 2],
+      },
+      {
+        id_berkas_pendaftaran: 'doc-ijazah',
+        nama_berkas: 'Ijazah / SKL Legalisir',
+        kategori: 'Akademik',
+        wajib_untuk_wni: true,
+        wajib_untuk_wna: true,
+        untuk_jenis_pendaftaran: [1, 2],
+        untuk_jalur_pendaftaran: [101, 102, 103],
+        untuk_pilihan_shift_pendaftaran: [1, 2],
+      },
+      {
+        id_berkas_pendaftaran: 'doc-rapor',
+        nama_berkas: 'Transkrip Nilai / Rapor Semester 1-5',
+        kategori: 'Akademik',
+        wajib_untuk_wni: true,
+        wajib_untuk_wna: false,
+        untuk_jenis_pendaftaran: [1],
+        untuk_jalur_pendaftaran: [101],
+        untuk_pilihan_shift_pendaftaran: [1],
+      },
+    ],
+    untuk_cmaba_non_disabilitas: [
+      {
+        id_berkas_pendaftaran: 'doc-sehat',
+        nama_berkas: 'Surat Keterangan Sehat Bebas Narkoba',
+        kategori: 'Kesehatan',
+        wajib_untuk_wni: true,
+        wajib_untuk_wna: true,
+        untuk_jenis_pendaftaran: [1, 2],
+        untuk_jalur_pendaftaran: [101, 102, 103],
+        untuk_pilihan_shift_pendaftaran: [1, 2],
+      },
+    ],
+    untuk_cmaba_disabilitas: [
+      {
+        id_berkas_pendaftaran: 'doc-disabilitas',
+        nama_berkas: 'Surat Asesmen Dokter Spesialis Disabilitas',
+        kategori: 'Aksesibilitas',
+        wajib_untuk_wni: true,
+        wajib_untuk_wna: true,
+        untuk_jenis_pendaftaran: [1],
+        untuk_jalur_pendaftaran: [104],
+        untuk_pilihan_shift_pendaftaran: [1],
+      },
+    ],
+  },
+};
