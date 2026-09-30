@@ -8,6 +8,7 @@ const PengaturanView = lazy(() => import('@/views/pengaturan/view'));
 const CalendarView = lazy(() => import('@/views/calendar/view'));
 const TreeViewPage = lazy(() => import('@/views/tree/view'));
 const WizardView = lazy(() => import('@/views/wizard/view'));
+const EditorView = lazy(() => import('@/views/editor/view'));
 
 export const adminRoutes: RouteObject[] = [
   {
@@ -17,6 +18,10 @@ export const adminRoutes: RouteObject[] = [
   {
     path: '/dashboard',
     element: <DashboardView />,
+  },
+  {
+    path: '/editor',
+    element: <EditorView />,
   },
   {
     path: '/wizard',

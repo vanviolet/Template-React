@@ -15,6 +15,7 @@
     "calendar": "Calendar",
     "tree": "Tree View",
     "wizard": "Wizard & Steps",
+    "editor": "Rich Editor",
     "analitik": "Analytics",
     "pengaturan": "Settings",
     "mainMenu": "Main Menu",
@@ -432,6 +433,164 @@
       "guests": "Guest Count",
       "organizer": "Organizer",
       "total": "Total Estimate"
+    }
+  },
+  "editor": {
+    "placeholder": "Start typing text, notes, or type \"#\" for heading, \"-\" for list...",
+    "view": {
+      "title": "Rich Text Editor",
+      "subtitle": "Feature-rich, minimalist, and modern editor built on Lexical with realtime Markdown shortcuts, floating selection toolbar, and form validation."
+    },
+    "tabs": {
+      "workspace": "Document",
+      "form": "Form & Zod",
+      "guide": "Features Guide"
+    },
+    "toolbar": {
+      "undo": "Undo",
+      "redo": "Redo",
+      "bold": "Bold",
+      "italic": "Italic",
+      "underline": "Underline",
+      "strikethrough": "Strikethrough",
+      "inlineCode": "Inline Code",
+      "colors": "Text & Highlight Color",
+      "align": "Text Alignment",
+      "insertLink": "Insert Hyperlink",
+      "insertImage": "Insert Image",
+      "insertTable": "Insert Table",
+      "insertHr": "Horizontal Divider",
+      "clearFormat": "Clear Formatting",
+      "unlock": "Unlock Edit Mode",
+      "lock": "Lock Preview (Read Only)",
+      "readOnly": "Read Only",
+      "editable": "Edit",
+      "enterFullscreen": "Fullscreen Mode (Zen)",
+      "exitFullscreen": "Exit Fullscreen"
+    },
+    "block": {
+      "paragraph": "Paragraph",
+      "h1": "Heading 1",
+      "h2": "Heading 2",
+      "h3": "Heading 3",
+      "bullet": "Bullet List",
+      "number": "Numbered List",
+      "check": "Check List",
+      "quote": "Quote",
+      "code": "Code Block"
+    },
+    "align": {
+      "left": "Align Left",
+      "center": "Align Center",
+      "right": "Align Right",
+      "justify": "Justify"
+    },
+    "color": {
+      "textColor": "Text Color",
+      "highlightColor": "Highlight Color"
+    },
+    "link": {
+      "insertTitle": "Insert Hyperlink",
+      "editTitle": "Edit Hyperlink",
+      "desc": "Enter the destination URL to attach to the selected text.",
+      "urlLabel": "Target URL",
+      "newTab": "Open in new tab (target=\"_blank\")",
+      "remove": "Remove Link"
+    },
+    "table": {
+      "dialogTitle": "Insert New Table",
+      "dialogDesc": "Choose desired row and column dimensions using the interactive grid or number inputs.",
+      "rows": "Rows Count",
+      "cols": "Columns Count",
+      "includeHeader": "Use First Row as Header (<th>)",
+      "insertBtn": "Insert Table"
+    },
+    "image": {
+      "dialogTitle": "Insert Image into Document",
+      "dialogDesc": "Upload local files, enter web image URLs, or choose from sample gallery presets.",
+      "tabUpload": "Upload File",
+      "tabUrl": "Web URL",
+      "tabPresets": "Sample Gallery",
+      "dropzone": "Click to select an image file from your computer",
+      "urlLabel": "Image Web URL",
+      "altLabel": "Alternative Text (Alt Text)",
+      "captionLabel": "Bottom Caption",
+      "insertBtn": "Insert Image"
+    },
+    "status": {
+      "words": "words",
+      "characters": "characters",
+      "minRead": "min read",
+      "markdownReady": "Markdown active"
+    },
+    "markdown": {
+      "title": "Markdown Shortcuts",
+      "hint": "Type at start of paragraph to automatically format"
+    },
+    "action": {
+      "loadTemplate": "Load Document Template",
+      "hint": "Pick a ready-made template or start typing freely",
+      "blankCanvas": "Start with Blank Canvas",
+      "copyHtml": "Copy HTML",
+      "copyText": "Copy Text",
+      "downloadMd": "Download Markdown",
+      "preview": "Preview Output"
+    },
+    "toast": {
+      "copyHtmlSuccess": "HTML code copied to clipboard!",
+      "copyHtmlDesc": "You can paste it into an email or website.",
+      "copyTextSuccess": "Plain text copied to clipboard!",
+      "copyTextDesc": "Clean text without HTML tags.",
+      "downloadMdSuccess": "Markdown file (.md) downloaded!",
+      "downloadMdDesc": "Saved in your device downloads folder.",
+      "sourceCopied": "HTML source code copied to clipboard."
+    },
+    "templates": {
+      "announcementTitle": "Official Memo & Announcement",
+      "announcementDesc": "Standard corporate or institutional announcement memo.",
+      "meetingTitle": "Meeting Minutes",
+      "meetingDesc": "Concise summary of agenda, discussion results, and action items.",
+      "sopTitle": "SOP & Technical Documentation",
+      "sopDesc": "Architecture overview, integration guide, and engineering standards."
+    },
+    "preview": {
+      "title": "Publication & Reader Preview",
+      "desc": "Semantic rendering output exactly as received by end readers or web visitors.",
+      "rendered": "Reader View",
+      "htmlCode": "HTML Source",
+      "footerNotice": "Standard HTML5 & Semantic Elements"
+    },
+    "form": {
+      "title": "TanStack Form + Zod Integration",
+      "subtitle": "Interactive example using RichEditor as a controlled form field with Zod schema validation.",
+      "fieldTitle": "Publication Title",
+      "titlePlaceholder": "Enter publication or document title...",
+      "fieldCategory": "Document Category",
+      "fieldAuthor": "Author / Creator",
+      "fieldContent": "Full Content / Manuscript",
+      "contentPlaceholder": "Type full document manuscript here. Use the toolbar or markdown shortcuts...",
+      "submitBtn": "Save & Publish Document",
+      "submitSuccess": "Form successfully validated and saved!",
+      "submitDesc": "Article data with rich content is ready to send to backend.",
+      "payloadTitle": "Submitted Payload (State)",
+      "payloadDesc": "JSON payload ready to submit to backend API in standard TypeScript format.",
+      "quickPreview": "Quick Render Summary:"
+    },
+    "guide": {
+      "lexicalEngineTitle": "Powered by Lexical Engine",
+      "lexicalEngineDesc": "Built upon Meta's official Lexical framework for reliable, modular, bloat-free rich text editing.",
+      "floatingBubbleTitle": "Floating Selection Bubble",
+      "floatingBubbleDesc": "Highlights text to instantly reveal a floating micro-toolbar inspired by Notion and Medium.",
+      "markdownTitle": "Realtime Markdown Shortcuts",
+      "markdownDesc": "Type standard Markdown triggers like \"#\", \"-\", or \">\" to instantly format blocks without touching your mouse.",
+      "colorPaletteTitle": "Semantic Color Palette & Highlights",
+      "colorPaletteDesc": "Curated palette of text and highlight colors fully compatible with Light and Dark themes.",
+      "multiExportTitle": "Multi-Format Export",
+      "multiExportDesc": "Export as clean HTML, raw plain text, or downloadable Markdown files with a single click.",
+      "zenModeTitle": "Distraction-Free Zen Fullscreen",
+      "zenModeDesc": "Immerse yourself in writing with one-click full window mode and instant Escape key exit.",
+      "cheatsheetTitle": "Quick Markdown Cheatsheet",
+      "cheatsheetDesc": "Speed up your writing workflow using natural keystroke shortcuts."
     }
   }
 }

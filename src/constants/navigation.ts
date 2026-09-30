@@ -15,6 +15,7 @@ import {
   Globe,
   FolderTree,
   ListOrdered,
+  PenTool,
   LucideIcon,
 } from 'lucide-react';
 
@@ -142,6 +143,15 @@ export const APP_NAV_GROUPS: NavGroupConfig[] = [
         badge: 'New',
       },
       {
+        id: 'editor',
+        labelKey: 'nav.editor',
+        defaultLabel: 'Rich Editor',
+        path: '/editor',
+        icon: PenTool,
+        keywords: ['editor', 'lexical', 'rich text', 'wysiwyg', 'dokumen', 'naskah', 'tulisan', 'markdown'],
+        badge: 'New',
+      },
+      {
         id: 'analitik',
         labelKey: 'nav.analitik',
         defaultLabel: 'Analitik',
@@ -190,6 +200,16 @@ export const QUICK_ACTIONS_REGISTRY: QuickActionConfig[] = [
     keywords: ['wizard', 'step', 'planner', 'alur', 'event'],
     action: ({ navigate }) => {
       navigate('/wizard');
+    },
+  },
+  {
+    id: 'open-editor',
+    titleKey: 'nav.editor',
+    defaultTitle: 'Buka Rich Text Editor (Lexical)',
+    icon: PenTool,
+    keywords: ['editor', 'lexical', 'tulis', 'naskah', 'dokumen', 'rich text', 'markdown'],
+    action: ({ navigate }) => {
+      navigate('/editor');
     },
   },
   {

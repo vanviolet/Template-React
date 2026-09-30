@@ -15,6 +15,7 @@
     "calendar": "Kalender",
     "tree": "Tree View",
     "wizard": "Wizard & Steps",
+    "editor": "Rich Editor",
     "analitik": "Analitik",
     "pengaturan": "Pengaturan",
     "mainMenu": "Menu Utama",
@@ -432,6 +433,164 @@
       "guests": "Jumlah Tamu",
       "organizer": "Penanggung Jawab",
       "total": "Estimasi Biaya"
+    }
+  },
+  "editor": {
+    "placeholder": "Mulai mengetik teks, catatan, atau ketik \"#\" untuk judul, \"-\" untuk daftar...",
+    "view": {
+      "title": "Rich Text Editor",
+      "subtitle": "Komponen editor kaya fitur, minimalis, dan modern berbasis Lexical dengan dukungan Markdown realtime, floating toolbar, dan validasi form."
+    },
+    "tabs": {
+      "workspace": "Dokumen",
+      "form": "Form & Zod",
+      "guide": "Panduan Fitur"
+    },
+    "toolbar": {
+      "undo": "Urungkan",
+      "redo": "Ulangi",
+      "bold": "Tebal",
+      "italic": "Miring",
+      "underline": "Garis Bawah",
+      "strikethrough": "Coret",
+      "inlineCode": "Kode Sebaris",
+      "colors": "Warna Teks & Sorotan",
+      "align": "Perataan Teks",
+      "insertLink": "Sisipkan Tautan Hyperlink",
+      "insertImage": "Sisipkan Gambar",
+      "insertTable": "Sisipkan Tabel",
+      "insertHr": "Garis Pembatas Horizontal",
+      "clearFormat": "Hapus Semua Format Teks",
+      "unlock": "Buka Mode Edit",
+      "lock": "Kunci Pratinjau (Hanya Baca)",
+      "readOnly": "Hanya Baca",
+      "editable": "Edit",
+      "enterFullscreen": "Mode Layar Penuh (Zen)",
+      "exitFullscreen": "Keluar Layar Penuh"
+    },
+    "block": {
+      "paragraph": "Paragraf",
+      "h1": "Judul 1",
+      "h2": "Judul 2",
+      "h3": "Judul 3",
+      "bullet": "Daftar Poin",
+      "number": "Daftar Nomor",
+      "check": "Daftar Ceklis",
+      "quote": "Kutipan",
+      "code": "Blok Kode"
+    },
+    "align": {
+      "left": "Rata Kiri",
+      "center": "Rata Tengah",
+      "right": "Rata Kanan",
+      "justify": "Rata Kanan Kiri"
+    },
+    "color": {
+      "textColor": "Warna Teks",
+      "highlightColor": "Warna Sorotan"
+    },
+    "link": {
+      "insertTitle": "Sisipkan Tautan Hyperlink",
+      "editTitle": "Edit Tautan Hyperlink",
+      "desc": "Masukkan alamat URL tautan web yang ingin Anda sematkan pada teks terpilih.",
+      "urlLabel": "URL Tujuan",
+      "newTab": "Buka di tab baru (target=\"_blank\")",
+      "remove": "Hapus Tautan"
+    },
+    "table": {
+      "dialogTitle": "Sisipkan Tabel Baru",
+      "dialogDesc": "Pilih dimensi baris dan kolom yang diinginkan menggunakan kisi interaktif atau input angka.",
+      "rows": "Jumlah Baris",
+      "cols": "Jumlah Kolom",
+      "includeHeader": "Gunakan Baris Pertama sebagai Header Judul (<th>)",
+      "insertBtn": "Sisipkan Tabel"
+    },
+    "image": {
+      "dialogTitle": "Sisipkan Gambar ke Dokumen",
+      "dialogDesc": "Unggah berkas lokal, masukkan tautan URL web, atau gunakan galeri foto contoh.",
+      "tabUpload": "Unggah Berkas",
+      "tabUrl": "Tautan Web",
+      "tabPresets": "Galeri Contoh",
+      "dropzone": "Klik untuk memilih file gambar dari komputer",
+      "urlLabel": "Alamat URL Gambar",
+      "altLabel": "Teks Alternatif (Alt Text)",
+      "captionLabel": "Keterangan Bawah (Caption)",
+      "insertBtn": "Sisipkan Gambar"
+    },
+    "status": {
+      "words": "kata",
+      "characters": "karakter",
+      "minRead": "mnt baca",
+      "markdownReady": "Markdown aktif"
+    },
+    "markdown": {
+      "title": "Pintasan Format Markdown",
+      "hint": "Ketik di awal paragraf untuk otomatis memformat"
+    },
+    "action": {
+      "loadTemplate": "Pilih Template Dokumen",
+      "hint": "Pilih format siap pakai atau ketik bebas",
+      "blankCanvas": "Mulai dari Kanvas Kosong",
+      "copyHtml": "Salin HTML",
+      "copyText": "Salin Teks",
+      "downloadMd": "Unduh Markdown",
+      "preview": "Pratinjau Hasil"
+    },
+    "toast": {
+      "copyHtmlSuccess": "Kode HTML berhasil disalin ke clipboard!",
+      "copyHtmlDesc": "Anda dapat menempelkannya di email atau web.",
+      "copyTextSuccess": "Teks polos berhasil disalin!",
+      "copyTextDesc": "Format teks bersih tanpa tag HTML.",
+      "downloadMdSuccess": "File Markdown (.md) berhasil diunduh!",
+      "downloadMdDesc": "Disimpan di folder unduhan perangkat Anda.",
+      "sourceCopied": "Kode HTML disalin ke clipboard."
+    },
+    "templates": {
+      "announcementTitle": "Surat Edaran & Pengumuman Resmi",
+      "announcementDesc": "Format standar edaran resmi perusahaan atau institusi.",
+      "meetingTitle": "Notulen Rapat (Meeting Minutes)",
+      "meetingDesc": "Catatan ringkas agenda, hasil diskusi, dan daftar aksi tindak lanjut.",
+      "sopTitle": "SOP & Dokumentasi Teknis",
+      "sopDesc": "Panduan teknis arsitektur, panduan konfigurasi, dan best practices."
+    },
+    "preview": {
+      "title": "Pratinjau Dokumen Siap Cetak & Publikasi",
+      "desc": "Hasil render semantik persis seperti yang akan diterima pengguna atau pembaca situs.",
+      "rendered": "Tampilan Baca",
+      "htmlCode": "Kode HTML",
+      "footerNotice": "Standard HTML5 & Semantic Elements"
+    },
+    "form": {
+      "title": "Integrasi TanStack Form + Zod Validation",
+      "subtitle": "Contoh penggunaan RichEditor sebagai field formulir terkontrol dengan validasi skema Zod.",
+      "fieldTitle": "Judul Publikasi",
+      "titlePlaceholder": "Masukkan judul publikasi atau surat...",
+      "fieldCategory": "Kategori Dokumen",
+      "fieldAuthor": "Penulis / Penyusun",
+      "fieldContent": "Isi Dokumen / Naskah Lengkap",
+      "contentPlaceholder": "Tulis isi naskah lengkap di sini. Gunakan toolbar untuk styling atau ketik tanda markdown...",
+      "submitBtn": "Simpan & Publikasikan Dokumen",
+      "submitSuccess": "Formulir berhasil divalidasi dan disimpan!",
+      "submitDesc": "Data artikel dengan rich content siap dikirim ke backend.",
+      "payloadTitle": "Payload Terkirim (State)",
+      "payloadDesc": "JSON payload siap dikirim ke API backend sesuai arsitektur TypeScript.",
+      "quickPreview": "Ringkasan Render Cepat:"
+    },
+    "guide": {
+      "lexicalEngineTitle": "Bertenaga Lexical Engine",
+      "lexicalEngineDesc": "Menggunakan framework editor resmi Meta (Lexical) yang ringan, modular, dan berperforma tinggi tanpa bloat.",
+      "floatingBubbleTitle": "Floating Selection Bubble",
+      "floatingBubbleDesc": "Saat kata atau kalimat diseleksi, bilah aksi cepat melayang otomatis di atas teks ala Notion & Medium.",
+      "markdownTitle": "Markdown Otomatis Secara Realtime",
+      "markdownDesc": "Ketik simbol Markdown standar seperti \"#\", \"-\", atau \">\" untuk mengubah format blok seketika tanpa harus menyentuh mouse.",
+      "colorPaletteTitle": "Palet Warna & Sorotan Semantic",
+      "colorPaletteDesc": "Pilihan warna teks profesional dan penyorot latar (highlight) yang serasi dengan tema Light dan Dark.",
+      "multiExportTitle": "Ekspor Multi-Format",
+      "multiExportDesc": "Dukungan penuh salin kode sumber HTML standar, teks polos bersih, serta ekspor berkas Markdown (.md).",
+      "zenModeTitle": "Mode Layar Penuh (Zen Writing)",
+      "zenModeDesc": "Fokus menulis tanpa distraksi dengan satu klik mode layar penuh dan tombol keluar cepat (Escape).",
+      "cheatsheetTitle": "Tabel Pintasan Pengetikan Cepat (Markdown Cheatsheet)",
+      "cheatsheetDesc": "Tingkatkan efisiensi mengetik Anda dengan pintasan langsung di dalam area penulisan editor."
     }
   }
 }
