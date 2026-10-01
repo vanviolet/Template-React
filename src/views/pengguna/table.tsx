@@ -81,20 +81,20 @@ export function PenggunaTable() {
     <div className="rounded-2xl border border-border/60 bg-card shadow-xs overflow-hidden">
       {/* 1. Integrated Card Top Bar: Search, Filters & Action Button */}
       <div className="p-4 sm:p-5 bg-card flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-        {/* Materio Style Pill Search Input */}
+        {/* Search Input */}
         <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground/80" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/80" />
           <Input
             type="text"
             placeholder={t('pengguna.placeholders.search')}
             value={filterParams.search || ''}
             onChange={(e) => updateParams({ search: e.target.value })}
-            className="pl-10 h-10 rounded-full bg-muted/40 border-border/50 focus:bg-background transition-all text-xs"
+            className="pl-9 h-9 rounded-lg bg-background border-input text-xs"
           />
         </div>
 
         {/* Filter Controls & Add Button */}
-        <div className="flex flex-wrap items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2">
           <div className="w-36">
             <Combobox
               options={ROLE_OPTIONS}
@@ -117,7 +117,7 @@ export function PenggunaTable() {
               variant="outline"
               size="sm"
               onClick={resetFilters}
-              className="text-xs h-10 rounded-xl text-muted-foreground hover:text-foreground"
+              className="text-xs h-9 px-3 rounded-lg text-muted-foreground hover:text-foreground cursor-pointer"
               title={t('common.reset')}
             >
               <RotateCcw className="h-3.5 w-3.5 mr-1" />

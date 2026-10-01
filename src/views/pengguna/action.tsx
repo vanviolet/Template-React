@@ -15,10 +15,10 @@ export function PenggunaAction() {
       actionButton={
         <Button
           onClick={() => openDialog('create')}
-          size="sm"
-          className="h-10 px-4 rounded-xl shadow-xs font-medium text-xs cursor-pointer"
+          size="default"
+          className="h-9 px-3.5 rounded-lg shadow-xs font-medium text-xs cursor-pointer"
         >
-          <Plus className="h-4 w-4 mr-1.5" />
+          <Plus className="h-3.5 w-3.5 mr-1.5" />
           <span>{t('pengguna.addTitle')}</span>
         </Button>
       }

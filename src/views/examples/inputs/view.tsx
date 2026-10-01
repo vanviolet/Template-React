@@ -213,12 +213,12 @@ export default function InputsExampleView() {
             </div>
             <CardTitle className="text-sm font-semibold mt-2">Date & Time Picker</CardTitle>
             <CardDescription className="text-xs">
-              Pemilihan tanggal, jam, serta kombinasi date-time terpadu untuk form registrasi.
+              Pemilihan tanggal dan jam terstandarisasi dengan ketinggian konsisten (h-9).
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
             <div>
-              <label className="text-xs font-medium text-foreground block mb-1">Tanggal Lahir</label>
+              <label className="text-xs font-medium text-foreground block mb-1.5">Tanggal Lahir</label>
               <DatePicker
                 value={selectedDate}
                 onChange={setSelectedDate}
@@ -226,11 +226,11 @@ export default function InputsExampleView() {
               />
             </div>
             <div>
-              <label className="text-xs font-medium text-foreground block mb-1">Jadwal Sesi Tes</label>
-              <DateTimePicker
-                value={selectedDateTime}
-                onChange={setSelectedDateTime}
-                placeholder="Pilih tanggal & jam..."
+              <label className="text-xs font-medium text-foreground block mb-1.5">Waktu / Jam Sesi</label>
+              <TimePicker
+                value={selectedTime}
+                onChange={setSelectedTime}
+                placeholder="Pilih waktu..."
               />
             </div>
           </CardContent>

@@ -127,47 +127,43 @@ export function TimePicker({
   };
 
   const displayTime = value || placeholder || '--:--';
-  const displayLabel = label ?? t('timepicker.selectTime', 'Select time');
 
   return (
-    <div className={cn('relative inline-block w-full', className)}>
+    <div className={cn('relative w-full', className)}>
+      {label && (
+        <label className="text-xs font-medium text-foreground block mb-1.5 leading-none">
+          {label}
+        </label>
+      )}
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild disabled={disabled}>
           <button
             type="button"
             className={cn(
-              'group relative flex w-full flex-col justify-center rounded-xl border border-input bg-card px-3.5 py-2 text-left shadow-xs transition-all duration-150 outline-none cursor-pointer select-none',
-              'hover:border-primary/50 hover:bg-accent/20 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20',
-              isOpen && 'border-primary ring-2 ring-primary/20 shadow-sm',
-              disabled && 'cursor-not-allowed opacity-50 hover:border-input hover:bg-card',
+              'group flex h-9 w-full items-center justify-between rounded-lg border border-input bg-background px-3 py-1 text-xs shadow-2xs transition-all duration-150',
+              'hover:bg-accent/40 hover:border-accent-foreground/20 focus:outline-none focus:ring-1 focus:ring-ring focus:border-ring',
+              isOpen && 'border-primary ring-1 ring-primary/20',
+              disabled && 'cursor-not-allowed opacity-50 hover:border-input hover:bg-background',
               triggerClassName
             )}
           >
-            {/* Top tiny label */}
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground group-hover:text-primary transition-colors block truncate leading-tight">
-              {displayLabel}
-            </span>
-
-            {/* Input row */}
-            <div className="mt-1 flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2 min-w-0">
-                <Clock className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary transition-colors" />
-                <span
-                  className={cn(
-                    'truncate text-sm font-semibold tracking-tight',
-                    value ? 'text-foreground' : 'text-muted-foreground'
-                  )}
-                >
-                  {displayTime}
-                </span>
-              </div>
-              <ChevronDown
+            <div className="flex items-center gap-2 min-w-0 flex-1">
+              <Clock className="h-3.5 w-3.5 shrink-0 text-muted-foreground group-hover:text-foreground transition-colors" />
+              <span
                 className={cn(
-                  'h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200',
-                  isOpen && 'rotate-180 text-primary'
+                  'truncate text-xs',
+                  value ? 'text-foreground font-medium' : 'text-muted-foreground font-normal'
                 )}
-              />
+              >
+                {displayTime}
+              </span>
             </div>
+            <ChevronDown
+              className={cn(
+                'h-3.5 w-3.5 opacity-60 group-hover:opacity-100 transition-transform duration-200',
+                isOpen && 'rotate-180 text-primary opacity-100'
+              )}
+            />
           </button>
         </PopoverTrigger>
 
