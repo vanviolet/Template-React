@@ -19,14 +19,26 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/utils/cn';
 
+function toDate(val: Date | string | null | undefined): Date | null {
+  if (!val) return null;
+  if (val instanceof Date) {
+    return isNaN(val.getTime()) ? null : val;
+  }
+  if (typeof val === 'string') {
+    const parsed = new Date(val);
+    return isNaN(parsed.getTime()) ? null : parsed;
+  }
+  return null;
+}
+
 export interface DatePickerProps {
-  value?: Date | null;
+  value?: Date | string | null;
   onChange?: (date: Date | null) => void;
   label?: string;
   placeholder?: string;
   disabled?: boolean;
-  minDate?: Date;
-  maxDate?: Date;
+  minDate?: Date | string;
+  maxDate?: Date | string;
   clearable?: boolean;
   formatStr?: string;
   className?: string;
@@ -51,14 +63,17 @@ export function DatePicker({
   const { t, i18n } = useTranslation();
   const lang = i18n.resolvedLanguage || 'id';
   const [isOpen, setIsOpen] = React.useState(false);
-  const [currentMonth, setCurrentMonth] = React.useState<Date>(() => value || new Date());
-  const [selectedDate, setSelectedDate] = React.useState<Date | null>(value || null);
+
+  const initialDate = React.useMemo(() => toDate(value), [value]);
+  const [currentMonth, setCurrentMonth] = React.useState<Date>(() => initialDate || new Date());
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(initialDate);
 
   // Sync internal state when external value changes
   React.useEffect(() => {
-    setSelectedDate(value || null);
-    if (value) {
-      setCurrentMonth(value);
+    const valid = toDate(value);
+    setSelectedDate(valid);
+    if (valid) {
+      setCurrentMonth(valid);
     }
   }, [value]);
 
@@ -98,21 +113,27 @@ export function DatePicker({
   };
 
   // Month change from select
+  const safeMonth = React.useMemo(() => {
+    return currentMonth instanceof Date && !isNaN(currentMonth.getTime())
+      ? currentMonth
+      : new Date();
+  }, [currentMonth]);
+
   const handleMonthSelect = (monthIndex: number) => {
-    const updated = new Date(currentMonth);
+    const updated = new Date(safeMonth);
     updated.setMonth(monthIndex);
     setCurrentMonth(updated);
   };
 
   // Year change from select
   const handleYearSelect = (year: number) => {
-    const updated = new Date(currentMonth);
+    const updated = new Date(safeMonth);
     updated.setFullYear(year);
     setCurrentMonth(updated);
   };
 
   // Calendar days calculation
-  const monthStart = startOfMonth(currentMonth);
+  const monthStart = startOfMonth(safeMonth);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart, { weekStartsOn: 1 });
   const endDate = endOfWeek(monthEnd, { weekStartsOn: 1 });
@@ -223,7 +244,7 @@ export function DatePicker({
               {/* Month Select */}
               <div className="relative">
                 <select
-                  value={currentMonth.getMonth()}
+                  value={safeMonth.getMonth()}
                   onChange={(e) => handleMonthSelect(Number(e.target.value))}
                   className="appearance-none bg-muted/60 hover:bg-muted font-bold text-xs text-foreground rounded-lg pl-2 pr-6 py-1.5 cursor-pointer outline-none border border-border/60 transition-colors capitalize focus:ring-1 focus:ring-primary"
                 >
@@ -239,7 +260,7 @@ export function DatePicker({
               {/* Year Select */}
               <div className="relative">
                 <select
-                  value={currentMonth.getFullYear()}
+                  value={safeMonth.getFullYear()}
                   onChange={(e) => handleYearSelect(Number(e.target.value))}
                   className="appearance-none bg-muted/60 hover:bg-muted font-bold text-xs text-foreground rounded-lg pl-2 pr-6 py-1.5 cursor-pointer outline-none border border-border/60 transition-colors focus:ring-1 focus:ring-primary"
                 >

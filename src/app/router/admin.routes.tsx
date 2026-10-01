@@ -1,50 +1,53 @@
 import { lazy } from 'react';
 import { RouteObject, Navigate } from 'react-router-dom';
 
-const DashboardView = lazy(() => import('@/views/dashboard/view'));
+const ExamplesView = lazy(() => import('@/views/examples/view'));
 const PenggunaView = lazy(() => import('@/views/pengguna/view'));
-const AnalitikView = lazy(() => import('@/views/analitik/view'));
-const PengaturanView = lazy(() => import('@/views/pengaturan/view'));
-const CalendarView = lazy(() => import('@/views/calendar/view'));
-const TreeViewPage = lazy(() => import('@/views/tree/view'));
-const WizardView = lazy(() => import('@/views/wizard/view'));
-const EditorView = lazy(() => import('@/views/editor/view'));
 
 export const adminRoutes: RouteObject[] = [
   {
     path: '/',
-    element: <Navigate to="/dashboard" replace />,
+    element: <Navigate to="/examples" replace />,
   },
   {
-    path: '/dashboard',
-    element: <DashboardView />,
+    path: '/examples',
+    element: <ExamplesView />,
   },
   {
-    path: '/editor',
-    element: <EditorView />,
-  },
-  {
-    path: '/wizard',
-    element: <WizardView />,
+    path: '/example',
+    element: <Navigate to="/examples" replace />,
   },
   {
     path: '/pengguna',
     element: <PenggunaView />,
   },
+  // Backward compatibility redirects to the unified examples hub
   {
-    path: '/tree',
-    element: <TreeViewPage />,
-  },
-  {
-    path: '/analitik',
-    element: <AnalitikView />,
+    path: '/dashboard',
+    element: <Navigate to="/examples" replace />,
   },
   {
     path: '/calendar',
-    element: <CalendarView />,
+    element: <Navigate to="/examples?tab=calendar" replace />,
+  },
+  {
+    path: '/tree',
+    element: <Navigate to="/examples?tab=tree" replace />,
+  },
+  {
+    path: '/editor',
+    element: <Navigate to="/examples?tab=editor" replace />,
+  },
+  {
+    path: '/wizard',
+    element: <Navigate to="/examples?tab=wizard" replace />,
+  },
+  {
+    path: '/analitik',
+    element: <Navigate to="/examples?tab=analitik" replace />,
   },
   {
     path: '/pengaturan',
-    element: <PengaturanView />,
+    element: <Navigate to="/examples" replace />,
   },
 ];

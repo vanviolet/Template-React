@@ -1,21 +1,14 @@
 import {
-  LayoutDashboard,
   Users,
-  BarChart3,
-  Settings,
-  Mail,
-  MessageSquare,
-  Calendar,
-  Kanban,
-  GraduationCap,
-  Truck,
+  Sparkles,
   PlusCircle,
   Sun,
   Moon,
   Globe,
   FolderTree,
-  ListOrdered,
+  Calendar,
   PenTool,
+  Sliders,
   LucideIcon,
 } from 'lucide-react';
 
@@ -54,19 +47,32 @@ export interface QuickActionConfig {
 
 /**
  * Single source of truth for Navigation groups (Sidebar & Command Palette)
+ * Hanya 2 Menu Utama: Example & Pengguna
  */
 export const APP_NAV_GROUPS: NavGroupConfig[] = [
   {
-    group: 'APPS & PAGES',
+    group: 'MENU UTAMA',
     groupKey: 'nav.mainMenu',
     items: [
       {
-        id: 'dashboard',
-        labelKey: 'nav.dashboard',
-        defaultLabel: 'Dashboard',
-        path: '/dashboard',
-        icon: LayoutDashboard,
-        keywords: ['home', 'beranda', 'ringkasan', 'overview'],
+        id: 'examples',
+        labelKey: 'nav.examples',
+        defaultLabel: 'Example',
+        path: '/examples',
+        icon: Sparkles,
+        keywords: [
+          'example',
+          'examples',
+          'komponen',
+          'showcase',
+          'kalender',
+          'tree',
+          'editor',
+          'input',
+          'wizard',
+          'analitik',
+        ],
+        badge: 'Hub',
       },
       {
         id: 'pengguna',
@@ -74,104 +80,7 @@ export const APP_NAV_GROUPS: NavGroupConfig[] = [
         defaultLabel: 'Pengguna',
         path: '/pengguna',
         icon: Users,
-        keywords: ['user', 'users', 'karyawan', 'pegawai', 'member'],
-      },
-      {
-        id: 'academy',
-        labelKey: 'nav.academy',
-        defaultLabel: 'Academy',
-        path: '/academy',
-        icon: GraduationCap,
-        hasChevron: true,
-        disabled: true,
-      },
-      {
-        id: 'logistics',
-        labelKey: 'nav.logistics',
-        defaultLabel: 'Logistics',
-        path: '/logistics',
-        icon: Truck,
-        hasChevron: true,
-        disabled: true,
-      },
-      {
-        id: 'email',
-        labelKey: 'nav.email',
-        defaultLabel: 'Email',
-        path: '/email',
-        icon: Mail,
-        badge: '12',
-      },
-      {
-        id: 'chat',
-        labelKey: 'nav.chat',
-        defaultLabel: 'Chat',
-        path: '/chat',
-        icon: MessageSquare,
-      },
-      {
-        id: 'calendar',
-        labelKey: 'nav.calendar',
-        defaultLabel: 'Kalender',
-        path: '/calendar',
-        icon: Calendar,
-        keywords: ['jadwal', 'event', 'agenda', 'schedule'],
-      },
-      {
-        id: 'kanban',
-        labelKey: 'nav.kanban',
-        defaultLabel: 'Kanban',
-        path: '/kanban',
-        icon: Kanban,
-      },
-      {
-        id: 'tree',
-        labelKey: 'nav.tree',
-        defaultLabel: 'Tree View',
-        path: '/tree',
-        icon: FolderTree,
-        keywords: ['tree', 'struktur', 'berkas', 'folder', 'hierarchy', 'direktori'],
-        badge: 'New',
-      },
-      {
-        id: 'wizard',
-        labelKey: 'nav.wizard',
-        defaultLabel: 'Wizard & Steps',
-        path: '/wizard',
-        icon: ListOrdered,
-        keywords: ['wizard', 'step', 'stepper', 'tahapan', 'alur', 'event', 'planner'],
-        badge: 'New',
-      },
-      {
-        id: 'editor',
-        labelKey: 'nav.editor',
-        defaultLabel: 'Rich Editor',
-        path: '/editor',
-        icon: PenTool,
-        keywords: ['editor', 'lexical', 'rich text', 'wysiwyg', 'dokumen', 'naskah', 'tulisan', 'markdown'],
-        badge: 'New',
-      },
-      {
-        id: 'analitik',
-        labelKey: 'nav.analitik',
-        defaultLabel: 'Analitik',
-        path: '/analitik',
-        icon: BarChart3,
-        keywords: ['statistik', 'chart', 'laporan', 'analytics'],
-      },
-    ],
-  },
-  {
-    group: 'SYSTEM',
-    groupKey: 'nav.system',
-    items: [
-      {
-        id: 'pengaturan',
-        labelKey: 'nav.pengaturan',
-        defaultLabel: 'Pengaturan',
-        path: '/pengaturan',
-        icon: Settings,
-        keywords: ['setting', 'settings', 'konfigurasi', 'config', 'theme'],
+        keywords: ['user', 'users', 'karyawan', 'pegawai', 'member', 'table', 'tabel'],
       },
     ],
   },
@@ -183,33 +92,63 @@ export const APP_NAV_GROUPS: NavGroupConfig[] = [
  */
 export const QUICK_ACTIONS_REGISTRY: QuickActionConfig[] = [
   {
+    id: 'open-examples',
+    titleKey: 'nav.examples',
+    defaultTitle: 'Buka Halaman Example Components Hub',
+    icon: Sparkles,
+    keywords: ['example', 'contoh', 'showcase', 'komponen'],
+    action: ({ navigate }) => {
+      navigate('/examples');
+    },
+  },
+  {
+    id: 'example-tree',
+    titleKey: 'nav.tree',
+    defaultTitle: 'Buka Example Tree View & Network Graph',
+    icon: FolderTree,
+    keywords: ['tree', 'graph', 'diagram', 'relasi', 'hierarki'],
+    action: ({ navigate }) => {
+      navigate('/examples?tab=tree');
+    },
+  },
+  {
+    id: 'example-calendar',
+    titleKey: 'nav.calendar',
+    defaultTitle: 'Buka Example Kalender Interaktif',
+    icon: Calendar,
+    keywords: ['calendar', 'kalender', 'agenda', 'jadwal'],
+    action: ({ navigate }) => {
+      navigate('/examples?tab=calendar');
+    },
+  },
+  {
+    id: 'example-editor',
+    titleKey: 'nav.editor',
+    defaultTitle: 'Buka Example Rich Text Editor (Lexical)',
+    icon: PenTool,
+    keywords: ['editor', 'lexical', 'wysiwyg', 'dokumen'],
+    action: ({ navigate }) => {
+      navigate('/examples?tab=editor');
+    },
+  },
+  {
+    id: 'example-inputs',
+    titleKey: 'nav.inputs',
+    defaultTitle: 'Buka Example Input & Form (Rupiah, No HP, NIK)',
+    icon: Sliders,
+    keywords: ['input', 'number', 'rupiah', 'phone', 'nik', 'combobox'],
+    action: ({ navigate }) => {
+      navigate('/examples?tab=inputs');
+    },
+  },
+  {
     id: 'add-user',
     titleKey: 'pengguna.addTitle',
     defaultTitle: 'Tambah Pengguna Baru',
     icon: PlusCircle,
-    keywords: ['create', 'new', 'user', 'tambah', 'pengguna'],
+    keywords: ['create', 'new', 'user', 'tambah', 'pengguna', 'table'],
     action: ({ navigate }) => {
       navigate('/pengguna?action=add');
-    },
-  },
-  {
-    id: 'open-wizard',
-    titleKey: 'nav.wizard',
-    defaultTitle: 'Buka Halaman Wizard & Steps',
-    icon: ListOrdered,
-    keywords: ['wizard', 'step', 'planner', 'alur', 'event'],
-    action: ({ navigate }) => {
-      navigate('/wizard');
-    },
-  },
-  {
-    id: 'open-editor',
-    titleKey: 'nav.editor',
-    defaultTitle: 'Buka Rich Text Editor (Lexical)',
-    icon: PenTool,
-    keywords: ['editor', 'lexical', 'tulis', 'naskah', 'dokumen', 'rich text', 'markdown'],
-    action: ({ navigate }) => {
-      navigate('/editor');
     },
   },
   {

@@ -4,8 +4,8 @@ import { AdminLayout } from '@/layouts/app/layout';
 import { AuthLayout } from '@/layouts/auth/layout';
 import { adminRoutes } from './admin.routes';
 
-const LoginView = lazy(() => import('@/views/auth/login/view'));
-const RegisterView = lazy(() => import('@/views/auth/register/view'));
+const LoginView = lazy(() => import('@/views/examples/auth/login/view'));
+const RegisterView = lazy(() => import('@/views/examples/auth/register/view'));
 
 const router = createBrowserRouter([
   {

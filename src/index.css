@@ -343,3 +343,10 @@ html[data-font-scale="relaxed"] {
 [data-sonner-toast] [data-close-button] {
   display: none !important;
 }
+
+/* Network Diagram Canvas Dot Grid Pattern */
+.bg-dot-grid {
+  background-image: radial-gradient(color-mix(in oklch, var(--foreground) 12%, transparent) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+

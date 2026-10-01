@@ -7,7 +7,7 @@ import { cn } from '@/utils/cn';
 import { setHours, setMinutes, parseDate, formatDate, DATE_FORMATS } from '@/utils/date';
 
 export interface DateTimePickerProps {
-  value?: Date | null;
+  value?: Date | string | null;
   onChange?: (date: Date | null) => void;
   dateLabel?: string;
   timeLabel?: string;
@@ -34,11 +34,21 @@ export function DateTimePicker({
   const { t, i18n } = useTranslation();
   const lang = i18n.resolvedLanguage || 'id';
 
+  const dateValue = React.useMemo(() => {
+    if (!value) return null;
+    if (value instanceof Date) return isNaN(value.getTime()) ? null : value;
+    if (typeof value === 'string') {
+      const parsed = new Date(value);
+      return isNaN(parsed.getTime()) ? null : parsed;
+    }
+    return null;
+  }, [value]);
+
   // Parse current hour/minute from Date
   const currentTimeString = React.useMemo(() => {
-    if (!value) return '';
-    return formatDate(value, 'hh:mm a', lang);
-  }, [value, lang]);
+    if (!dateValue) return '';
+    return formatDate(dateValue, 'hh:mm a', lang);
+  }, [dateValue, lang]);
 
   const handleDateChange = (newDate: Date | null) => {
     if (!newDate) {
@@ -46,9 +56,9 @@ export function DateTimePicker({
       return;
     }
     // Retain existing hour and minute if value existed
-    if (value) {
+    if (dateValue) {
       const merged = new Date(newDate);
-      merged.setHours(value.getHours(), value.getMinutes(), 0, 0);
+      merged.setHours(dateValue.getHours(), dateValue.getMinutes(), 0, 0);
       onChange?.(merged);
     } else {
       // Default to 09:00 AM

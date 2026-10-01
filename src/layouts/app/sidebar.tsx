@@ -87,7 +87,7 @@ export function AppSidebar() {
           )}
         >
           <Link
-            to="/dashboard"
+            to="/examples"
             className={cn(
               'flex items-center gap-3 min-w-0 group',
               isCollapsed && !isMobile && 'justify-center'
