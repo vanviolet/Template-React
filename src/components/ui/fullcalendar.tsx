@@ -13,7 +13,7 @@ import '@fullcalendar/react/themes/classic/theme.css';
 import '@fullcalendar/react/themes/classic/palette.css';
 import './fullcalendar.css';
 
-import type { CalendarDemoEvent, CalendarEventTone } from '@/views/calendar/events';
+import type { CalendarDemoEvent, CalendarEventTone } from '@/views/examples/calendar/events';
 import { cn } from '@/utils/cn';
 
 const plugins = [
@@ -96,9 +96,8 @@ const EventCard = React.memo(({ eventInfo }: { eventInfo: any }) => {
   const isMultiDay = extendedProps.isMultiDay || event.allDay;
 
   // Tooltip content for instant full information without clipping
-  const tooltipText = `${title}\n${timeText ? `⏰ ${timeText}` : ''}${
-    location ? `\n📍 ${location}` : ''
-  }${extendedProps.description ? `\nℹ️ ${extendedProps.description}` : ''}`;
+  const tooltipText = `${title}\n${timeText ? `⏰ ${timeText}` : ''}${location ? `\n📍 ${location}` : ''
+    }${extendedProps.description ? `\nℹ️ ${extendedProps.description}` : ''}`;
 
   // 1. DayGrid Month View: Compact soft pill card
   if (viewType === 'dayGridMonth') {
